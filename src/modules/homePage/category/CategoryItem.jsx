@@ -15,7 +15,7 @@ const Article = styled.article`
   border-style: solid;
   border-width: 1px;
   display: flex;
-  padding: 16px 20px;
+  padding: 12px 16px;
   flex-direction: column;
   overflow: hidden;
   align-items: center;
@@ -37,6 +37,7 @@ const CategoryIcon = styled.img`
   object-fit: contain;
   object-position: center;
   width: 44px;
+  margin-top: 12px;
 
   @media (max-width: 991px) {
     width: 38px;

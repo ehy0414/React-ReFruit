@@ -5,6 +5,7 @@ import { ProductList } from "../modules/homePage/timeSale/ProductList";
 import ViewAllProductsButton from "../modules/homePage/timeSale/ViewAllProductsButton";
 import CategoryTitle from "../modules/homePage/category/CategoryTitle";
 import CategoryList from "../modules/homePage/category/CategoryList";
+import Footer from "../components/layout/footer/Footer";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -15,7 +16,8 @@ const Wrapper = styled.div`
 const Lines = styled.hr`
     margin-top: 3%;
     margin-bottom: 3%;
-    width:80%
+    margin-left: 10%;
+    width:79%
 `;
 
 export function HomePage() {
@@ -29,6 +31,7 @@ export function HomePage() {
             <Lines />
             <CategoryTitle />
             <CategoryList />
+            <Footer />
         </Wrapper>
     );
 }
