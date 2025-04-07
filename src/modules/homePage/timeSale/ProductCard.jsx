@@ -3,32 +3,33 @@ import * as React from "react";
 import styled from "styled-components";
 import { HeartIcon, StarRating } from "./Icons";
 
-const ProductCard = () => {
-  return (
-    <CardWrapper>
-      <ProductImageSection>
-        <DiscountBadge>-40%</DiscountBadge>
-        <WishlistButton>
-          <HeartIcon />
-        </WishlistButton>
-        <ImageContainer>
-          <ProductImg src="https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58" alt="HAVIT HV-G92 Gamepad" />
-        </ImageContainer>
-      </ProductImageSection>
-      <ProductInfo>
-        <ProductTitle>HAVIT HV-G92 Gamepad</ProductTitle>
-        <PriceContainer>
-          <CurrentPrice>$120</CurrentPrice>
-          <OriginalPrice>$160</OriginalPrice>
-        </PriceContainer>
-        <RatingContainer>
-          <StarRating />
-          <ReviewCount>(88)</ReviewCount>
-        </RatingContainer>
-      </ProductInfo>
-    </CardWrapper>
-  );
-};
+const ProductCard = ({ product }) => {
+    return (
+      <CardWrapper>
+        <ProductImageSection>
+          <DiscountBadge>{product.discount}</DiscountBadge>
+          <WishlistButton>
+            <HeartIcon />
+          </WishlistButton>
+          <ImageContainer>
+            <ProductImg src={product.image} alt={product.title} />
+          </ImageContainer>
+        </ProductImageSection>
+        <ProductInfo>
+          <ProductTitle>{product.title}</ProductTitle>
+          <PriceContainer>
+            <CurrentPrice>{product.currentPrice}</CurrentPrice>
+            <OriginalPrice>{product.originalPrice}</OriginalPrice>
+          </PriceContainer>
+          <RatingContainer>
+            <StarRating />
+            <ReviewCount>({product.reviewCount})</ReviewCount>
+          </RatingContainer>
+        </ProductInfo>
+      </CardWrapper>
+    );
+  };
+  
 
 const CardWrapper = styled.article`
   display: flex;

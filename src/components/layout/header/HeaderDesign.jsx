@@ -1,23 +1,39 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderDesign = () => {
+  const navigate = useNavigate();
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+      navigate(`/search?query=${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
+
   return (
     <HeaderContainer>
-      <LogoText>로고</LogoText>
+      <LogoText onClick={() => {navigate("/")}}>로고</LogoText>
 
       <Nav>
-        <MenuItem>메인화면</MenuItem>
-        <MenuItem>베스트셀러</MenuItem>
-        <MenuItem>추천상품</MenuItem>
-        <MenuItem>상품리뷰</MenuItem>
+        <MenuItem onClick={() => {navigate("/")}}>메인화면</MenuItem>
+        <MenuItem onClick={() => {navigate("/")}}>베스트셀러</MenuItem>
+        <MenuItem onClick={() => {navigate("/")}}>추천상품</MenuItem>
+        <MenuItem onClick={() => {navigate("/")}}>상품리뷰</MenuItem>
       </Nav>
 
       <RightSection>
         <SearchContainer>
-          <SearchText>무슨 상품을 원하세요?</SearchText>
-          <SearchIcon
+        <SearchInput
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="무슨 상품을 원하세요?"
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+          />
+          <SearchIcon onClick={handleSearch}
             dangerouslySetInnerHTML={{
               __html: `<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M20 20.5L16.2223 16.7156M18.3158 11.6579C18.3158 13.5563 17.5617 15.3769 16.2193 16.7193C14.8769 18.0617 13.0563 18.8158 11.1579 18.8158C9.2595 18.8158 7.43886 18.0617 6.0965 16.7193C4.75413 15.3769 4 13.5563 4 11.6579C4 9.7595 4.75413 7.93886 6.0965 6.5965C7.43886 5.25413 9.2595 4.5 11.1579 4.5C13.0563 4.5 14.8769 5.25413 16.2193 6.5965C17.5617 7.93886 18.3158 9.7595 18.3158 11.6579V11.6579Z" stroke="black" stroke-width="1.5" stroke-linecap="round"></path>
@@ -88,6 +104,7 @@ const LogoText = styled.h1`
   font-weight: 700;
   font-size: 24px;
   color: #000;
+  cursor: pointer;
 `;
 
 const Nav = styled.nav`
@@ -144,11 +161,21 @@ const SearchContainer = styled.div`
   }
 `;
 
-const SearchText = styled.span`
+const SearchInput = styled.input`
   font-family: "Poppins", sans-serif;
   font-size: 12px;
   color: #000;
-  opacity: 0.5;
+  border: none;
+  background: transparent;
+  width: 150px;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
 `;
 
 const SearchIcon = styled.div`

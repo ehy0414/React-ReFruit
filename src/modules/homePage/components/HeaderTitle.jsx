@@ -52,14 +52,14 @@ const TodayProduct = styled.h2`
 
 
 
-export const SaleHeader = () => {
+export const HeaderTitle = ({title}) => {
   return (
     <HeaderContainer>
       <TitleWrapper>
         <IndicatorContainer>
           <RedIndicator />
         </IndicatorContainer>
-        <TodayProduct>오늘의 상품</TodayProduct>
+        <TodayProduct>{title}</TodayProduct>
       </TitleWrapper>
     </HeaderContainer>
   );

@@ -2,15 +2,15 @@
 import React from "react";
 import styled from "styled-components";
 import { HeaderTitle } from "../components/HeaderTitle";
-import { CountdownTimer } from "./CountdownTimer";
 import { ProductImages } from "../components/ProductImages";
 
-const SaleContainer = styled.section`
+
+const TitleContainer = styled.section`
   display: flex;
   align-items: end;
   justify-content: start;
   flex-wrap: wrap;
-  margin-left: 11%;
+  margin-left: 10%;
   margin-top: 5%;
   width: 100%;
 `;
@@ -27,16 +27,14 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const SaleTimer = () => {
+const CategoryTitle = () => {
   return (
-    <SaleContainer>
+    <TitleContainer>
       <ContentWrapper>
-        <HeaderTitle title="이달의 상품"/>
+        <HeaderTitle title="카테고리"/>
       </ContentWrapper>
-      <CountdownTimer />
-      <ProductImages />
-    </SaleContainer>
+    </TitleContainer>
   );
 };
 
-export default SaleTimer;
+export default CategoryTitle;
