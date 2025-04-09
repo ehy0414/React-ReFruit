@@ -37,20 +37,10 @@ export const HeaderSection = styled.header`
   }
 `;
 
-export const BrandLogo = styled.img`
-  width: 40px;
-  height: 49px;
-
-  @media (max-width: 640px) {
-    width: 32px;
-    height: 39px;
-  }
-`;
-
 export const ProductTitle = styled.h2`
   color: #fafafa;
   font-family: "Poppins", sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 24px;
 
@@ -67,7 +57,7 @@ export const PromotionalText = styled.h1`
   line-height: 60px;
   letter-spacing: 1.92px;
   max-width: 294px;
-  margin-top: 20px;
+  margin-top: 5px;
 
   @media (max-width: 991px) {
     font-size: 36px;
@@ -119,8 +109,12 @@ export const ProductImage = styled.img`
   position: absolute;
   right: 292px;
   top: 16px;
-  width: 496px;
-  height: 352px;
+  width: 580px;
+  height: 280px;
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
 
   @media (max-width: 991px) {
     position: relative;
@@ -143,8 +137,30 @@ export const NavigationContainer = styled.nav`
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
+  
+  display: flex; /* ⭐ 가로 정렬을 위한 핵심 */
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: 640px) {
     bottom: 16px;
+  }
+`;
+
+
+export const Dot = styled.div`
+  width: 10px;
+  height: 10px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background-color: ${(props) => (props.active ? "#fff" : "#666")};
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  @media (max-width: 640px) {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
   }
 `;
