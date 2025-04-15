@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const TimerContainer = styled.div`
@@ -9,7 +9,7 @@ const TimerContainer = styled.div`
   gap: 17px;
   color: #000;
   white-space: nowrap;
-  margin-left: -16%;
+  margin-left: -240px;
   width: 400px;
   @media (max-width: 991px) {
     white-space: initial;
@@ -25,23 +25,13 @@ const TimeUnit = styled.div`
 `;
 
 const UnitLabel = styled.div`
-  font-family:
-    Poppins,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Poppins, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 12px;
   font-weight: 500;
 `;
 
 const UnitValue = styled.div`
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 32px;
   font-weight: 700;
   line-height: 1;
@@ -55,45 +45,89 @@ const Separator = styled.div`
   min-height: 16px;
   margin-top: 26px;
 `;
+
 const SaleTitle = styled.h1`
   color: #000;
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 36px;
   font-weight: 600;
   line-height: 1;
   letter-spacing: 1.44px;
   margin-top: 38px;
   margin-right: 80px;
-  `;
+`;
 
-export const CountdownTimer = () => {
+const CountdownTimer = ({ subTitle, count, targetDate = "2025-04-18T23:59:59" }) => {
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+
+  function getTimeLeft() {
+    const now = new Date();
+    const endDate = new Date(targetDate);
+    const diff = endDate - now;
+
+    if (diff <= 0) {
+      return {
+        days: "00",
+        hours: "00",
+        minutes: "00",
+        seconds: "00",
+      };
+    }
+
+    const totalSeconds = Math.floor(diff / 1000);
+    const seconds = totalSeconds % 60;
+    const totalMinutes = Math.floor(totalSeconds / 60);
+    const minutes = totalMinutes % 60;
+    const totalHours = Math.floor(totalMinutes / 60);
+    const hours = totalHours % 24;
+    const days = Math.floor(totalHours / 24);
+
+    return {
+      days: String(days).padStart(2, "0"),
+      hours: String(hours).padStart(2, "0"),
+      minutes: String(minutes).padStart(2, "0"),
+      seconds: String(seconds).padStart(2, "0"),
+    };
+  }
+
+  useEffect(() => {
+    if (!count) return;
+
+    const timer = setInterval(() => {
+      setTimeLeft(getTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [count, targetDate]);
+
   return (
     <TimerContainer>
-        <SaleTitle>SALE 상품</SaleTitle>
-        <TimeUnit>
+      <SaleTitle>{subTitle}</SaleTitle>
+      {count && (
+        <>
+          <TimeUnit>
             <UnitLabel>Days</UnitLabel>
-            <UnitValue>03</UnitValue>
-        </TimeUnit>
-        <Separator />
-        <TimeUnit>
+            <UnitValue>{timeLeft.days}</UnitValue>
+          </TimeUnit>
+          <Separator />
+          <TimeUnit>
             <UnitLabel>Hours</UnitLabel>
-            <UnitValue>23</UnitValue>
-        </TimeUnit>
-        <Separator />
-        <TimeUnit>
+            <UnitValue>{timeLeft.hours}</UnitValue>
+          </TimeUnit>
+          <Separator />
+          <TimeUnit>
             <UnitLabel>Minutes</UnitLabel>
-            <UnitValue>19</UnitValue>
-        </TimeUnit>
-        <Separator />
-        <TimeUnit>
+            <UnitValue>{timeLeft.minutes}</UnitValue>
+          </TimeUnit>
+          <Separator />
+          <TimeUnit>
             <UnitLabel>Seconds</UnitLabel>
-            <UnitValue>56</UnitValue>
-        </TimeUnit>
+            <UnitValue>{timeLeft.seconds}</UnitValue>
+          </TimeUnit>
+        </>
+      )}
     </TimerContainer>
   );
 };
+
+export default CountdownTimer;

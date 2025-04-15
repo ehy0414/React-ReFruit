@@ -2,8 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import { HeaderTitle } from "../components/HeaderTitle";
-import { CountdownTimer } from "./CountdownTimer";
-import { ProductImages } from "../components/ProductImages";
+import CountdownTimer from "./CountdownTimer";
 
 const SaleContainer = styled.section`
   display: flex;
@@ -27,14 +26,13 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const SaleTimer = () => {
+const SaleTimer = ({title, subTitle, count}) => {
   return (
     <SaleContainer>
       <ContentWrapper>
-        <HeaderTitle title="이달의 상품"/>
+        <HeaderTitle title={title}/>
       </ContentWrapper>
-      <CountdownTimer />
-      <ProductImages />
+      <CountdownTimer subTitle={subTitle} count={count}/>
     </SaleContainer>
   );
 };

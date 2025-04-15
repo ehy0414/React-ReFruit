@@ -25,12 +25,19 @@ export function HomePage() {
     return(
         <Wrapper>
             <PromotionalBanner />
-            <SaleTimer />
+            <SaleTimer  title="오늘의 상품" 
+                        subTitle="SALE 상품"
+                        count={true} />
             <ProductList />
             <ViewAllProductsButton />
             <Lines />
             <CategoryTitle />
             <CategoryList />
+            <Lines />    
+            <SaleTimer  title="이달의 상품" 
+                        subTitle="이달의 주인공"
+                        count={false} />
+            <ProductList />
             <Footer />
         </Wrapper>
     );
