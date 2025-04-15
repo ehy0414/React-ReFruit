@@ -1,11 +1,13 @@
 "use client";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-function ViewAllProductsButton() {
+function ViewAllProductsButton({path}) {
+  const navigate = useNavigate();
   return (
     <ButtonWrapper>
-      <ActionButton>View All Products</ActionButton>
+      <ActionButton onClick={() => {navigate(`${path}`)}}>View All Products</ActionButton>
     </ButtonWrapper>
   );
 }

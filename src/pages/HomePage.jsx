@@ -29,7 +29,7 @@ export function HomePage() {
                         subTitle="SALE 상품"
                         count={true} />
             <ProductList />
-            <ViewAllProductsButton />
+            <ViewAllProductsButton path="/refruit/sale" />
             <Lines />
             <CategoryTitle />
             <CategoryList />
@@ -38,6 +38,7 @@ export function HomePage() {
                         subTitle="이달의 주인공"
                         count={false} />
             <ProductList />
+            <ViewAllProductsButton path="/refruit/most" />
             <Footer />
         </Wrapper>
     );
