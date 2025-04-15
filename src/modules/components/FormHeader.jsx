@@ -13,7 +13,6 @@ const FormHeader = ({title, subTitle}) => {
 const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
-  gap: 24px;
 `;
 
 const Title = styled.h1`
@@ -21,7 +20,7 @@ const Title = styled.h1`
   font-size: 36px;
   font-weight: 500;
   color: #000;
-  letter-spacing: 1.44px;
+  letter-spacing: 1px;
 `;
 
 const Subtitle = styled.p`

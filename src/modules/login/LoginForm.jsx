@@ -26,7 +26,7 @@ const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  margin-right: 8%;
+  margin-right: 10%;
 
   @media (max-width: 991px) {
     align-items: center;
