@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import styled from "styled-components";
-import LoginForm from "../modules/login/LoginForm";
 import FormImageSection from "../modules/components/FormImageSection";
+import JoinForm from "../modules/join/login/JoinForm";
 
 
-const LoginPage = () => {
+const JoinPage = () => {
   return (
     <>
       <link
@@ -14,7 +14,7 @@ const LoginPage = () => {
       />
       <PageContainer>
         <FormImageSection />
-        <LoginForm />
+        <JoinForm />
       </PageContainer>
     </>
   );
@@ -44,4 +44,4 @@ const PageContainer = styled.main`
   }
 `;
 
-export default LoginPage;
+export default JoinPage;

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const LoginHeader = () => {
+const FormHeader = ({title, subTitle}) => {
   return (
     <HeaderContainer>
-      <Title>로그인 화면</Title>
-      <Subtitle>아이디 및 비밀번호를 입력해주세요</Subtitle>
+      <Title>{title}</Title>
+      <Subtitle>{subTitle}</Subtitle>
     </HeaderContainer>
   );
 };
@@ -31,4 +31,4 @@ const Subtitle = styled.p`
   color: #000;
 `;
 
-export default LoginHeader;
+export default FormHeader;

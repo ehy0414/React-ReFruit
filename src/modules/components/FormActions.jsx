@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-const LoginActions = () => {
+const FormActions = ({ButtonText}) => {
   return (
     <ActionsContainer>
-      <LoginButton type="submit">Log In</LoginButton>
+      <LoginButton type="submit">{ButtonText}</LoginButton>
     </ActionsContainer>
   );
 };
@@ -37,22 +37,4 @@ const LoginButton = styled.button`
   }
 `;
 
-const ForgotPassword = styled.button`
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  color: #db4444;
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  @media (max-width: 640px) {
-    font-size: 14px;
-  }
-`;
-
-export default LoginActions;
+export default FormActions;

@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 import styled from "styled-components";
-import LoginInputs from "./components/LoginInputs";
-import FormHeader from "../components/FormHeader";
-import FormActions from "../components/FormActions";
+import FormHeader from "../../components/FormHeader";
+import JoinInputs from "./components/JoinInputs";
+import FormActions from "../../components/FormActions";
 
 
-const LoginForm = () => {
+const JoinForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
@@ -14,10 +14,10 @@ const LoginForm = () => {
 
   return (
     <FormContainer onSubmit={handleSubmit}>
-      <FormHeader title="로그인 화면"
-                  subTitle="이메일 및 패스워드를 입력해주세요"/>
-      <LoginInputs />
-      <FormActions ButtonText="로그인"/>
+      <FormHeader title="회원가입 화면"
+                  subTitle="회원 정보를 입력해주세요"/>
+      <JoinInputs />
+      <FormActions ButtonText="회원가입"/>
     </FormContainer>
   );
 };
@@ -38,4 +38,4 @@ const FormContainer = styled.form`
   }
 `;
 
-export default LoginForm;
+export default JoinForm;

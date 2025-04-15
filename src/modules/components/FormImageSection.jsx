@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const LoginImageSection = () => {
+const FormImageSection = () => {
   return (
     <ImageContainer>
       <CartImage src="https://cdn.builder.io/api/v1/image/assets/TEMP/97f6d8868977ae3fdae27fc5fa8c17f814942251?placeholderIfAbsent=true" alt="Shopping Cart" />
@@ -38,4 +38,4 @@ const CartImage = styled.img`
   }
 `;
 
-export default LoginImageSection;
+export default FormImageSection;
