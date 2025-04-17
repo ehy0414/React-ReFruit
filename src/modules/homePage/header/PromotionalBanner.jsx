@@ -1,95 +1,97 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import {
-  BannerContainer,
-  ContentWrapper,
-  HeaderSection,
-  BrandLogo,
-  ProductTitle,
-  PromotionalText,
-  CTASection,
-  CTAContent,
-  CTAText,
-  CTAUnderline,
-  ProductImage,
+  Overlay,
   NavigationContainer,
+  DotWrapper,
   Dot,
 } from "./BannerComponents";
-import { ArrowIcon } from "./Icons";
-import img1 from "./assets/image.png";
+import image1 from "./assets/image1.png";
+import image2 from "./assets/image2.png";
 
 const banners = [
   {
     title: "어디 농산물가게",
-    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/f1b3390352df2040c37b7f8593cd899b68d3ad51",
-    link: "/iphone-14",
+    image: `${image1}`,
+    link: "/store-1",
   },
   {
     title: "2번째 농산물가게",
-    image: img1,
-    link: "/iphone-14-plus",
+    image: `${image2}`,
+    link: "/store-2",
   },
   {
     title: "3번째 농산물가게",
     image: "https://cdn.builder.io/api/v1/image/assets/TEMP/sample3",
-    link: "/iphone-14-pro",
+    link: "/store-3",
   },
   {
     title: "4번째 농산물가게",
     image: "https://cdn.builder.io/api/v1/image/assets/TEMP/sample4",
-    link: "/iphone-14-pro-max",
+    link: "/store-4",
   },
   {
     title: "5번째 농산물가게",
     image: "https://cdn.builder.io/api/v1/image/assets/TEMP/sample5",
-    link: "/iphone-accessories",
+    link: "/store-5",
   },
 ];
 
 const PromotionalBanner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
   const navigate = useNavigate();
 
   const handleDotClick = (index) => {
-    setCurrentIndex(index);
+    if (index === currentIndex) return;
+
+    setVisible(false);
+    setTimeout(() => {
+      setCurrentIndex(index);
+      setVisible(true);
+    }, 300);
   };
 
-  const handleImageClick = () => {
+  const handleClickBanner = () => {
     navigate(banners[currentIndex].link);
   };
 
   return (
-    <BannerContainer>
-      <ContentWrapper>
+    <BannerContainer onClick={handleClickBanner}>
+      <ImageWrapper>
+        {banners.map((banner, index) => (
+          <FadeImage
+            key={index}
+            src={banner.image}
+            alt={banner.title}
+            style={{
+              opacity: index === currentIndex && visible ? 1 : 0,
+              zIndex: index === currentIndex ? 2 : 1,
+            }}
+          />
+        ))}
+      </ImageWrapper>
+
+      <Overlay />
+
+      {/* <ContentWrapper>
         <HeaderSection>
           <ProductTitle>{banners[currentIndex].title}</ProductTitle>
         </HeaderSection>
-
-        <PromotionalText>Up to 10% off Voucher</PromotionalText>
-
-        <CTASection>
-          <CTAContent>
-            <CTAText>Shop Now</CTAText>
-            <CTAUnderline />
-          </CTAContent>
-          <ArrowIcon />
-        </CTASection>
-      </ContentWrapper>
-
-      <ProductImage
-        src={banners[currentIndex].image}
-        alt={`Banner ${currentIndex + 1}`}
-        onClick={handleImageClick}
-        style={{ cursor: "pointer" }}
-      />
+      </ContentWrapper> */}
 
       <NavigationContainer>
         {banners.map((_, index) => (
-          <Dot
+          <DotWrapper
             key={index}
-            active={index === currentIndex}
-            onClick={() => handleDotClick(index)}
-          />
+            onClick={(e) => {
+              e.stopPropagation(); // 도트 클릭 시 배너 클릭 방지
+              handleDotClick(index);
+            }}
+          >
+            <Dot active={index === currentIndex} />
+          </DotWrapper>
         ))}
       </NavigationContainer>
     </BannerContainer>
@@ -97,3 +99,34 @@ const PromotionalBanner = () => {
 };
 
 export default PromotionalBanner;
+
+const BannerContainer = styled.div`
+  position: relative;
+  margin: 0 auto;
+  height: 344px;
+  width: 80%;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+
+  @media (max-width: 991px) {
+    height: auto;
+    padding-bottom: 60px;
+  }
+`;
+
+const ImageWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+`;
+
+const FadeImage = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: auto;
+  transition: opacity 0.5s ease-in-out;
+`;
+
