@@ -7,65 +7,128 @@ import {
   validateName,
 } from "../../../utils/validation";
 
-const JoinInputs = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [name, setName] = useState("");
+const JoinInputs = ({ formData, onChange }) => {
+  const { email, password, passwordCheck, name } = formData;
 
-  const emailValidation = validateEmail(email);
-  const passwordValidation = validatePassword(password);
-  const confirmValidation = validatePasswordConfirm(password, confirmPassword);
-  const nameValidation = validateName(name);
+  const [touched, setTouched] = useState({
+    email: false,
+    password: false,
+    confirmPassword: false,
+    name: false,
+  });
+
+  const emailValid = validateEmail(email);
+  const passwordValid = validatePassword(password);
+  const confirmPasswordValid =
+    password === passwordCheck && passwordCheck
+      ? { valid: true, message: "비밀번호가 일치합니다." }
+      : { valid: false, message: "비밀번호가 일치하지 않습니다." };
+  const nameValid = validateName(name);
 
   return (
     <InputsContainer>
-      <InputGroup>
-        <InputLabel>이메일</InputLabel>
-        <Input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <InputLine />
-        <ValidationText valid={emailValidation.valid}>{emailValidation.message}</ValidationText>
-      </InputGroup>
-
-      <InputGroup>
-        <InputLabel>비밀번호</InputLabel>
-        <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <InputLine />
-        <ValidationText valid={passwordValidation.valid}>{passwordValidation.message}</ValidationText>
-      </InputGroup>
-
-      <InputGroup>
-        <InputLabel>비밀번호 확인</InputLabel>
-        <Input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-        <InputLine />
-        <ValidationText valid={confirmValidation.valid}>{confirmValidation.message}</ValidationText>
-      </InputGroup>
-
+      {/* 이름 */}
       <InputGroup>
         <InputLabel>이름</InputLabel>
-        <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <Input
+          type="text"
+          id="name"
+          name="name"
+          value={name}
+          onChange={onChange}
+          onFocus={() => setTouched({ ...touched, name: true })}
+          onBlur={() => {
+            if (!name) setTouched({ ...touched, name: false });
+          }}
+        />
         <InputLine />
-        <ValidationText valid={nameValidation.valid}>{nameValidation.message}</ValidationText>
+        {touched.name && (
+          <ValidationMessage isValid={nameValid.valid}>
+            {nameValid.message}
+          </ValidationMessage>
+        )}
+      </InputGroup>
+
+      {/* 이메일 */}
+      <InputGroup>
+        <InputLabel>이메일</InputLabel>
+        <Input
+          type="text"
+          id="email"
+          name="email"
+          value={email}
+          onChange={onChange}
+          onFocus={() => setTouched({ ...touched, email: true })}
+          onBlur={() => {
+            if (!email) setTouched({ ...touched, email: false });
+          }}
+        />
+        <InputLine />
+        {touched.email && (
+          <ValidationMessage isValid={emailValid.valid}>
+            {emailValid.message}
+          </ValidationMessage>
+        )}
+      </InputGroup>
+
+      {/* 비밀번호 */}
+      <InputGroup>
+        <InputLabel>비밀번호</InputLabel>
+        <Input
+          type="password"
+          id="password"
+          name="password"
+          value={password}
+          onChange={onChange}
+          onFocus={() => setTouched({ ...touched, password: true })}
+          onBlur={() => {
+            if (!password) setTouched({ ...touched, password: false });
+          }}
+        />
+        <InputLine />
+        {touched.password && (
+          <ValidationMessage isValid={passwordValid.valid}>
+            {passwordValid.message}
+          </ValidationMessage>
+        )}
+      </InputGroup>
+
+      {/* 비밀번호 확인 */}
+      <InputGroup>
+        <InputLabel>비밀번호 확인</InputLabel>
+        <Input
+          type="password"
+          id="passwordCheck"
+          name="passwordCheck"
+          value={passwordCheck}
+          onChange={onChange}
+          onFocus={() => setTouched({ ...touched, confirmPassword: true })}
+          onBlur={() => {
+            if (!passwordCheck) setTouched({ ...touched, confirmPassword: false });
+          }}
+        />
+        <InputLine />
+        {touched.confirmPassword && (
+          <ValidationMessage isValid={confirmPasswordValid.valid}>
+            {confirmPasswordValid.message}
+          </ValidationMessage>
+        )}
       </InputGroup>
     </InputsContainer>
   );
 };
 
-
 const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
+  margin-bottom: 20px;
 `;
 
 const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1px;
-
-  &:focus-within label {
-    opacity: 1;
-  }
 `;
 
 const InputLabel = styled.label`
@@ -77,7 +140,6 @@ const InputLabel = styled.label`
   transition: opacity 0.3s ease;
 `;
 
-
 const Input = styled.input`
   background: transparent;
   border: none;
@@ -85,10 +147,6 @@ const Input = styled.input`
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   width: 100%;
-
-  &:focus + div {
-    opacity: 1;
-  }
 `;
 
 const InputLine = styled.div`
@@ -97,20 +155,14 @@ const InputLine = styled.div`
   opacity: 0.2;
   background-color: #000;
   transition: opacity 0.3s ease;
-
-  @media (max-width: 991px) {
-    width: 80%;
-  }
-
-  @media (max-width: 640px) {
-    width: 100%;
-  }
 `;
 
-const ValidationText = styled.p`
-  font-size: 12px;
-  margin-top: 5px;
-  color: ${({ valid }) => (valid ? "green" : "red")};
+const ValidationMessage = styled.div`
+  position: absolute;
+  transition: opacity 0.3s ease;
+  font-size: 14px;
+  margin-top: 55px;
+  color: ${(props) => (props.isValid ? "green" : "red")};
 `;
 
 export default JoinInputs;

@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import FormImageSection from "../modules/components/FormImageSection";
 import JoinForm from "../modules/join/JoinForm";
+import Footer from "../components/layout/footer/Footer";
 
 
 const JoinPage = () => {
@@ -16,6 +17,7 @@ const JoinPage = () => {
         <FormImageSection />
         <JoinForm />
       </PageContainer>
+      <Footer />
     </>
   );
 };
