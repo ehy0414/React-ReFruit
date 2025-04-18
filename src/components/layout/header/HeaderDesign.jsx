@@ -1,16 +1,59 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderDesign = () => {
   const navigate = useNavigate();
-
   const [searchTerm, setSearchTerm] = useState("");
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // 실제 로그인 상태로 교체 가능
+
+  const handleUserIconClick = () => {
+    setDropdownOpen(prev => !prev);
+  };
+
+  // 바깥 클릭 시 드롭다운 닫기
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if(userId) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleSearch = () => {
     if (searchTerm.trim()) {
       navigate(`/search?query=${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
+
+  // 로그아웃 함수
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userEmail");
+    setIsLoggedIn(false);
+    alert("로그아웃 되었습니다.");
+    navigate("/"); // 홈페이지로 이동
+  };
+
+  //프로필 클릭시 로그인 여부 확인
+  const handleProfileClick = () => {
+    if (isLoggedIn) {
+      navigate("/profile");
+    } else {
+      alert("로그인이 필요합니다.");
+      navigate("/login");
     }
   };
 
@@ -43,7 +86,7 @@ const HeaderDesign = () => {
         </SearchContainer>
 
         <IconsContainer>
-          <WishlistIcon
+          <WishlistIcon onClick={() => {navigate("/wishlist")}}
             dangerouslySetInnerHTML={{
               __html: `<svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M11 7.5C8.239 7.5 6 9.716 6 12.45C6 14.657 6.875 19.895 15.488 25.19C15.6423 25.2839 15.8194 25.3335 16 25.3335C16.1806 25.3335 16.3577 25.2839 16.512 25.19C25.125 19.895 26 14.657 26 12.45C26 9.716 23.761 7.5 21 7.5C18.239 7.5 16 10.5 16 10.5C16 10.5 13.761 7.5 11 7.5Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -64,15 +107,28 @@ const HeaderDesign = () => {
               }}
             />
           </CartContainer>
-          <UserIcon
+          <UserIcon onClick={handleUserIconClick}
             dangerouslySetInnerHTML={{
               __html: `<svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect y="0.5" width="32" height="32" rx="16" fill="#DB4444"></rect>
-              <path d="M21 23.5V21.8333C21 20.9493 20.691 20.1014 20.1408 19.4763C19.5907 18.8512 18.8446 18.5 18.0667 18.5H12.9333C12.1554 18.5 11.4093 18.8512 10.8592 19.4763C10.309 20.1014 10 20.9493 10 21.8333V23.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M16 15.5C17.6569 15.5 19 14.1569 19 12.5C19 10.8431 17.6569 9.5 16 9.5C14.3431 9.5 13 10.8431 13 12.5C13 14.1569 14.3431 15.5 16 15.5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>`,
+                <rect y="0.5" width="32" height="32" rx="16" fill="#DB4444"></rect>
+                <path d="M21 23.5V21.8333C21 20.9493 20.691 20.1014 20.1408 19.4763C19.5907 18.8512 18.8446 18.5 18.0667 18.5H12.9333C12.1554 18.5 11.4093 18.8512 10.8592 19.4763C10.309 20.1014 10 20.9493 10 21.8333V23.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 15.5C17.6569 15.5 19 14.1569 19 12.5C19 10.8431 17.6569 9.5 16 9.5C14.3431 9.5 13 10.8431 13 12.5C13 14.1569 14.3431 15.5 16 15.5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>`
             }}
           />
+          {isDropdownOpen && (
+            <DropdownMenu ref={dropdownRef}>
+              <DropdownItem onClick={handleProfileClick}>프로필</DropdownItem>
+              {isLoggedIn ? (
+                <DropdownItem onClick={handleLogout}>로그아웃</DropdownItem>
+              ) : (
+                <>
+                  <DropdownItem onClick={() => {navigate("/login")}}>로그인</DropdownItem>
+                  <DropdownItem onClick={() => {navigate("/join")}}>회원가입</DropdownItem>
+                </>
+              )}
+            </DropdownMenu>
+          )}
         </IconsContainer>
       </RightSection>
     </HeaderContainer>
@@ -214,6 +270,27 @@ const UserIcon = styled.button`
   padding: 0;
   cursor: pointer;
   display: flex;
+`;
+
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 5rem;
+  right: 9rem;
+  width: 120px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+`;
+
+const DropdownItem = styled.div`
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    background-color: #f5f5f5;
+  }
 `;
 
 export default HeaderDesign;
