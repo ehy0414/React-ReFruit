@@ -2,7 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import FormImageSection from "../modules/components/FormImageSection";
-import JoinForm from "../modules/join/login/JoinForm";
+import JoinForm from "../modules/join/JoinForm";
 
 
 const JoinPage = () => {

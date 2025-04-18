@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { RedHeartIcon, HeartIcon, StarRating } from "./Icons";
 import React, { useEffect, useState } from "react";
 import api from "../../../api/axios";
+import { useNavigate } from "react-router-dom";
 
 const userId = 1; // 임시 사용자 ID
 
 const ProductCard = ({ product }) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [wishlistId, setWishlistId] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // 컴포넌트 마운트 시 위시리스트 확인
@@ -27,6 +29,14 @@ const ProductCard = ({ product }) => {
   }, [product.id]);
 
   const handleWishlistToggle = async () => {
+    const userId = localStorage.getItem("userId");
+
+    if (!userId) {
+      alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+      navigate("/login");
+      return;
+    }
+
     try {
       if (isWishlisted) {
         await api.delete(`/wishlist/${wishlistId}`);

@@ -1,3 +1,17 @@
 {
-    "users" : []
+  "users": [
+    {
+      "id": "1744967145760",
+      "email": "",
+      "password": "",
+      "name": ""
+    }
+  ],
+  "wishlist": [
+    {
+      "id": "1744965978287",
+      "userId": 1,
+      "productId": 1
+    }
+  ]
 }
