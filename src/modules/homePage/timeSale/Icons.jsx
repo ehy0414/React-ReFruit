@@ -1,23 +1,49 @@
+
 export const HeartIcon = () => (
-    <svg
-      width="34"
-      height="34"
-      viewBox="0 0 34 34"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="heart-icon"
-    >
-      <circle cx="17" cy="17" r="17" fill="white" />
-      <path
-        d="M13 10C10.7912 10 9 11.7396 9 13.8859C9 15.6185 9.7 19.7305 16.5904 23.8873C16.7138 23.961 16.8555 24 17 24C17.1445 24 17.2862 23.961 17.4096 23.8873C24.3 19.7305 25 15.6185 25 13.8859C25 11.7396 23.2088 10 21 10C18.7912 10 17 12.3551 17 12.3551C17 12.3551 15.2088 10 13 10Z"
-        stroke="black"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-  
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    width="26"
+    height="26"
+    stroke="#000000"
+    strokeWidth="1.6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12.001 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+         2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81
+         14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4
+         6.86-8.55 11.54l-1.45 1.31z"
+    />
+  </svg>
+);
+
+export const RedHeartIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width="26"
+    height="26"
+    fill="#ff0000"
+    stroke="#000000"
+    strokeWidth="1.4"
+  >
+    <path
+      d="M12.001 21.35l-1.45-1.32C5.4 15.36 
+        2 12.28 2 8.5 2 5.42 4.42 3 
+        7.5 3c1.74 0 3.41 0.81 
+        4.5 2.09C13.09 3.81 
+        14.76 3 16.5 3 19.58 3 
+        22 5.42 22 8.5c0 3.78-3.4 
+        6.86-8.55 11.54l-1.45 1.31z"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
   export const StarRating = () => (
     <svg
       width="100"

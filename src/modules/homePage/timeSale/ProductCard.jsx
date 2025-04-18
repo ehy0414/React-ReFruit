@@ -1,34 +1,78 @@
 "use client";
-import * as React from "react";
 import styled from "styled-components";
-import { HeartIcon, StarRating } from "./Icons";
+import { RedHeartIcon, HeartIcon, StarRating } from "./Icons";
+import React, { useEffect, useState } from "react";
+import api from "../../../api/axios";
+
+const userId = 1; // 임시 사용자 ID
 
 const ProductCard = ({ product }) => {
-    return (
-      <CardWrapper>
-        <ProductImageSection>
-          <DiscountBadge>{product.discount}</DiscountBadge>
-          <WishlistButton>
-            <HeartIcon />
-          </WishlistButton>
-          <ImageContainer>
-            <ProductImg src={product.image} alt={product.title} />
-          </ImageContainer>
-        </ProductImageSection>
-        <ProductInfo>
-          <ProductTitle>{product.title}</ProductTitle>
-          <PriceContainer>
-            <CurrentPrice>{product.currentPrice}</CurrentPrice>
-            <OriginalPrice>{product.originalPrice}</OriginalPrice>
-          </PriceContainer>
-          <RatingContainer>
-            <StarRating />
-            <ReviewCount>({product.reviewCount})</ReviewCount>
-          </RatingContainer>
-        </ProductInfo>
-      </CardWrapper>
-    );
+  const [isWishlisted, setIsWishlisted] = useState(false);
+  const [wishlistId, setWishlistId] = useState(null);
+
+  useEffect(() => {
+    // 컴포넌트 마운트 시 위시리스트 확인
+    const checkWishlist = async () => {
+      try {
+        const res = await api.get(`/wishlist?userId=${userId}&productId=${product.id}`);
+        if (res.data.length > 0) {
+          setIsWishlisted(true);
+          setWishlistId(res.data[0].id);
+        }
+      } catch (err) {
+        console.error("Error checking wishlist", err);
+      }
+    };
+    checkWishlist();
+  }, [product.id]);
+
+  const handleWishlistToggle = async () => {
+    try {
+      if (isWishlisted) {
+        await api.delete(`/wishlist/${wishlistId}`);
+        setIsWishlisted(false);
+        setWishlistId(null);
+      } else {
+        const res = await api.post("/wishlist", {
+          id : Date.now().toString(),
+          userId,
+          productId: product.id,
+        });
+        setIsWishlisted(true);
+        setWishlistId(res.data.id);
+      }
+    } catch (err) {
+      console.error("Wishlist toggle failed", err);
+    }
   };
+  
+
+  return (
+    <CardWrapper>
+      <ProductImageSection>
+        <DiscountBadge>{product.discount}</DiscountBadge>
+        <WishlistButton onClick={handleWishlistToggle}>
+          {isWishlisted ? <RedHeartIcon /> : <HeartIcon />}
+        </WishlistButton>
+        <ImageContainer>
+          <ProductImg src={product.image} alt={product.title} />
+        </ImageContainer>
+      </ProductImageSection>
+      <ProductInfo>
+        <ProductTitle>{product.title}</ProductTitle>
+        <PriceContainer>
+          <CurrentPrice>{product.currentPrice}</CurrentPrice>
+          <OriginalPrice>{product.originalPrice}</OriginalPrice>
+        </PriceContainer>
+        <RatingContainer>
+          <StarRating />
+          <ReviewCount>({product.reviewCount})</ReviewCount>
+        </RatingContainer>
+      </ProductInfo>
+    </CardWrapper>
+  );
+};
+
   
 
 const CardWrapper = styled.article`
@@ -83,6 +127,7 @@ const DiscountBadge = styled.span`
   background-color: #db4444;
 `;
 
+
 const WishlistButton = styled.button`
   position: absolute;
   right: 12px;
@@ -91,6 +136,11 @@ const WishlistButton = styled.button`
   border: none;
   padding: 0;
   cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.15);
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -189,5 +239,7 @@ const ReviewCount = styled.span`
   line-height: 21px;
   opacity: 0.5;
 `;
+
+
 
 export default ProductCard;
