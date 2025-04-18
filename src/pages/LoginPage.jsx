@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import LoginForm from "../modules/login/LoginForm";
 import FormImageSection from "../modules/components/FormImageSection";
+import Footer from "../components/layout/footer/Footer";
 
 
 const LoginPage = () => {
@@ -16,6 +17,7 @@ const LoginPage = () => {
         <FormImageSection />
         <LoginForm />
       </PageContainer>
+      <Footer />
     </>
   );
 };

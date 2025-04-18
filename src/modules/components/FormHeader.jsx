@@ -13,6 +13,7 @@ const FormHeader = ({title, subTitle}) => {
 const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
+  margin-bottom: -20px;
 `;
 
 const Title = styled.h1`

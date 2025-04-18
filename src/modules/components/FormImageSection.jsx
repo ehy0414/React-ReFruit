@@ -30,7 +30,8 @@ const ImageContainer = styled.section`
 
 const CartImage = styled.img`
   width: 619px;
-  height: 506px;
+  height: 606px;
+  object-fit: cover;
 
   @media (max-width: 991px) {
     width: 80%;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import FormHeader from "../components/FormHeader";
 import JoinInputs from "./components/JoinInputs";
 import FormActions from "../components/FormActions";
-import api from "../../api/axios"; // json-server axios 인스턴스
+import api from "../../api/axios"; 
 import { useNavigate } from "react-router-dom";
 
 const JoinForm = () => {
@@ -62,6 +62,7 @@ const FormContainer = styled.form`
   flex-direction: column;
   gap: 40px;
   margin-right: 10%;
+  height: 600px;
 
   @media (max-width: 991px) {
     align-items: center;
