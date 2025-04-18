@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const FruitImages = () => {
+export const FruitImages = ({image}) => {
   return (
     <ImageColumn>
       <ImageContainer>
-        <ProductImg src="https://cdn.builder.io/api/v1/image/assets/7adddd5587f24b91884c2915be4df62c/efd3b56e64e75b4bb77b9934aa355066ee8fa2ac?placeholderIfAbsent=true" alt="Havic HV G-92 Gamepad" />
+        <ProductImg src={image} alt="Fruit Image" />
       </ImageContainer>
     </ImageColumn>
   );
@@ -29,7 +29,7 @@ const ImageContainer = styled.div`
   background-color: #f5f5f5;
   display: flex;
   flex-grow: 1;
-  padding: 100px 27px;
+
   flex-direction: column;
   overflow: hidden;
   width: 100%;
@@ -44,7 +44,8 @@ const ProductImg = styled.img`
   aspect-ratio: 1.42;
   object-fit: contain;
   object-position: center;
-  width: 100%;
+  width: 50%;
+  margin:0 auto;
   @media (max-width: 991px) {
     max-width: 100%;
   }

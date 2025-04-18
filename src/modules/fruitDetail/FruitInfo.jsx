@@ -3,7 +3,7 @@ import { FruitQuantity } from "./FruitQuantity";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const FruitInfo = () => {
+export const FruitInfo = ({product}) => {
     // 물품 구매 수량
     const [quantity, setQuantity] = useState(1);
 
@@ -28,22 +28,17 @@ export const FruitInfo = () => {
     return (
         <InfoColumn>
         <InfoContainer>
-            <ProductTitle>Havic HV G-92 Gamepad</ProductTitle>
+            <ProductTitle>{product.title}</ProductTitle>
             <RatingSection>
             <ReviewsWrapper>
                 <RatingStars src="https://cdn.builder.io/api/v1/image/assets/7adddd5587f24b91884c2915be4df62c/55500910f7fda67e937673122aa77ab99e4599d2?placeholderIfAbsent=true" alt="Rating stars" />
-                <ReviewCount>(150 Reviews)</ReviewCount>
+                <ReviewCount>({product.reviewCount})</ReviewCount>
             </ReviewsWrapper>
-            <StockInfo>
-                <Divider />
-                <StockStatus>In Stock</StockStatus>
-            </StockInfo>
+
             </RatingSection>
-            <ProductPrice>$192.00</ProductPrice>
+            <ProductPrice>{product.currentPrice}</ProductPrice>
             <ProductDescription>
-            PlayStation 5 Controller Skin High quality vinyl with air channel
-            adhesive for easy bubble free install & mess free removal Pressure
-            sensitive.
+              {product.content}
             </ProductDescription>
             <Separator />
             <ActionsContainer>
@@ -65,7 +60,8 @@ const InfoColumn = styled.div`
   align-items: stretch;
   line-height: normal;
   width: 45%;
-  margin-left: 180px;
+  margin-left: 160px;
+  margin-top: -50px;
   @media (max-width: 991px) {
     width: 100%;
   }
@@ -124,7 +120,8 @@ const ReviewsWrapper = styled.div`
 
 const RatingStars = styled.img`
   aspect-ratio: 5;
-  object-fit: contain;
+  object-fit: cover;
+  margin-top: -2px;
   object-position: center;
   width: 100px;
   flex-shrink: 0;

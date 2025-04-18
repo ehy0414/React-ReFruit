@@ -58,7 +58,9 @@ const ProductCard = ({ product }) => {
   
 
   return (
-    <CardWrapper>
+    <CardWrapper onClick={() => {
+      navigate(`/fruit/detail/${product.id}`)
+    }}>
       <ProductImageSection>
         <DiscountBadge>{product.discount}</DiscountBadge>
         <WishlistButton onClick={handleWishlistToggle}>
@@ -183,7 +185,8 @@ const ImageContainer = styled.div`
 const ProductImg = styled.img`
   width: 150px;
   height: 130px;
-  object-fit: contain;
+  margin-left:-14px;
+  object-fit: cover;
   @media (max-width: 991px) {
     width: 120px;
     height: 100px;
