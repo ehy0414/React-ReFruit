@@ -19,26 +19,27 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      // json-server에서 users 데이터 요청
-      const response = await api.get("/users", {
-        params: { email, password }
-      });
+      const response = await api.get("/users");
+      const users = response.data;
 
-      // 로그인 성공 시
-      if (response.data.length > 0) {
-        const user = response.data[0];  // 첫 번째 사용자 정보
+      const user = users.find(
+        (user) => user.email === email && user.password === password
+      );
 
-        // localStorage에 사용자 정보 저장
-        localStorage.setItem("user", JSON.stringify(user));
+      if (user) {
+        // ✅ 로그인 정보 저장
+        localStorage.setItem("userId", user.id);
+        localStorage.setItem("userName", user.name);
+        localStorage.setItem("userEmail", user.email);
 
         alert("로그인 성공!");
         navigate("/");
+        window.location.reload();
       } else {
-        setError("이메일 또는 비밀번호가 잘못되었습니다.");
+        alert("이메일 또는 비밀번호가 일치하지 않습니다.");
       }
-    } catch (err) {
-      console.error("로그인 중 오류 발생:", err);
-      setError("로그인 실패. 다시 시도해주세요.");
+    } catch (error) {
+      console.error("로그인 실패:", error);
     }
   };
 
