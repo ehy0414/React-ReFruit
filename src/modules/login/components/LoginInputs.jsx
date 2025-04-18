@@ -1,17 +1,31 @@
 import React from "react";
 import styled from "styled-components";
 
-const LoginInputs = () => {
+const LoginInputs = ({ email, password, setEmail, setPassword }) => {
   return (
     <InputsContainer>
       <InputGroup>
-        <InputLabel htmlFor="email">Email</InputLabel>
-        <Input type="text" id="email" name="email" required />
+        <InputLabel htmlFor="email">이메일</InputLabel>
+        <Input
+          type="text"
+          id="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}  // 이메일 값 업데이트
+          required
+        />
         <InputLine />
       </InputGroup>
       <InputGroup>
-        <InputLabel htmlFor="password">Password</InputLabel>
-        <Input type="password" id="password" name="password" required />
+        <InputLabel htmlFor="password">비밀번호</InputLabel>
+        <Input
+          type="password"
+          id="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}  // 비밀번호 값 업데이트
+          required
+        />
         <InputLine />
       </InputGroup>
     </InputsContainer>
@@ -42,7 +56,6 @@ const InputLabel = styled.label`
   opacity: 0.4;
   transition: opacity 0.3s ease;
 `;
-
 
 const Input = styled.input`
   background: transparent;
