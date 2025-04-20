@@ -7,22 +7,20 @@ export const FruitInfo = ({product}) => {
     // 물품 구매 수량
     const [quantity, setQuantity] = useState(1);
 
-    const params = useParams();
+    const {id} = useParams();
 
-    // 임시 데이터
-    const title = "Havic HV G-92 Gamepad";
-    const price = 192.00;
+
 
     const navigate= useNavigate();
 
     const handleBuyNow = () => {
-        const data = {
-            id: params,
-            title: title,
-            price: price,
-            cnt : quantity
-        }
-        navigate("/purchase", { state: data });
+      const data = {
+        id: id,
+        title: product.title,
+        price: product.currentPrice,
+        cnt : quantity
+      }
+        navigate(`/purchase/${id}`, { state: data });
     };
 
     return (
@@ -45,9 +43,8 @@ export const FruitInfo = ({product}) => {
 
             <FruitQuantity quantity={quantity} setQuantity={setQuantity}/>
 
-            <BuyButton onClick={handleBuyNow}>Buy Now</BuyButton>
+            <BuyButton onClick={handleBuyNow}>구입하기</BuyButton>
 
-            <WishlistButton src="https://cdn.builder.io/api/v1/image/assets/7adddd5587f24b91884c2915be4df62c/39cad115df8f8fac9803aafdeef0dc52c6de105b?placeholderIfAbsent=true" alt="Add to wishlist" />
             </ActionsContainer>
         </InfoContainer>
         </InfoColumn>
@@ -216,6 +213,7 @@ const BuyButton = styled.button`
   color: #fafafa;
   border: none;
   cursor: pointer;
+  margin-left: 12%;
   @media (max-width: 991px) {
     padding: 10px 20px;
   }

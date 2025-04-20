@@ -33,6 +33,7 @@ const ImageContainer = styled.div`
   flex-direction: column;
   overflow: hidden;
   width: 100%;
+  height: 450px;
   @media (max-width: 991px) {
     max-width: 100%;
     margin-top: 40px;
