@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import icons from "../../../assets/images/image.png";
 
 const HeaderDesign = () => {
   const navigate = useNavigate();
@@ -94,17 +95,8 @@ const HeaderDesign = () => {
             }}
           />
           <CartContainer>
-            <CartIcon
-              dangerouslySetInnerHTML={{
-                __html: `<svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.25 28.75C9.66421 28.75 10 28.4142 10 28C10 27.5858 9.66421 27.25 9.25 27.25C8.83579 27.25 8.5 27.5858 8.5 28C8.5 28.4142 8.83579 28.75 9.25 28.75Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M19.75 28.75C20.1642 28.75 20.5 28.4142 20.5 28C20.5 27.5858 20.1642 27.25 19.75 27.25C19.3358 27.25 19 27.5858 19 28C19 28.4142 19.3358 28.75 19.75 28.75Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M3.25 12.25H6.25L8.5 25H20.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M8.5 21H20.1925C20.2792 21.0001 20.3633 20.9701 20.4304 20.9151C20.4975 20.8601 20.5434 20.7836 20.5605 20.6986L21.9105 13.9486C21.9214 13.8942 21.92 13.838 21.9066 13.7841C21.8931 13.7303 21.8679 13.6801 21.8327 13.6372C21.7975 13.5943 21.7532 13.5597 21.703 13.536C21.6528 13.5122 21.598 13.5 21.5425 13.5H7" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <circle cx="23" cy="10.5" r="8" fill="#DB4444"></circle>
-                <text fill="#FAFAFA" style="white-space: pre" font-family="Poppins" font-size="12" letter-spacing="0em"><tspan x="20.0488" y="14.7">2</tspan></text>
-              </svg>`,
-              }}
+            <CartIcon onClick={() => {navigate("/orders")}}
+              src={icons}
             />
           </CartContainer>
           <UserIcon onClick={handleUserIconClick}
@@ -256,12 +248,14 @@ const CartContainer = styled.div`
   position: relative;
 `;
 
-const CartIcon = styled.button`
+const CartIcon = styled.img`
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
   display: flex;
+  width:22px;
+  height:23px;
 `;
 
 const UserIcon = styled.button`
