@@ -21,7 +21,7 @@ function App() {
         <Route path='/fruit/detail/:id' element={<FruitDetailPage />} />
 
         {/* 상품 구매페이지 */}
-        <Route path='/purchase' element={<OrderFruitPage />} />
+        <Route path='/purchase/:id' element={<OrderFruitPage />} />
 
 
       </Routes>

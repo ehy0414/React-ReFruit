@@ -1,11 +1,50 @@
 {
   "users": [
     {
-      "id": "1744967145760",
-      "email": "",
-      "password": "",
-      "name": ""
+      "id": "1744968463586",
+      "email": "test1@gmail.com",
+      "password": "test123@",
+      "name": "test"
     }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "HAVIT HV-G92 Gamepad",
+      "content": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
+      "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58",
+      "currentPrice": "$120",
+      "originalPrice": "$160",
+      "discount": "-40%",
+      "reviewCount": 88,
+      "userId": "1744968463586",
+      "type": "sale"
+    },
+    {
+      "id": 2,
+      "title": "Logitech G Pro X",
+      "content": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
+      "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58",
+      "currentPrice": "$150",
+      "originalPrice": "$200",
+      "discount": "-25%",
+      "reviewCount": 102,
+      "userId": "1744968463586",
+      "type": "monthly"
+    },
+    {
+      "id": 3,
+      "title": "Logitech G Pro X",
+      "content": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
+      "image": "/images/logo192.png",
+      "currentPrice": "$150",
+      "originalPrice": "$200",
+      "discount": "-25%",
+      "reviewCount": 102,
+      "userId": "1744968463586",
+      "type": "monthly"
+    }
+    
   ],
   "wishlist": [
     {
