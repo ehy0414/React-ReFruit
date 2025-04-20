@@ -1,33 +1,38 @@
 "use client";
-import * as React from "react";
 import styled from "styled-components";
 import OrderDetails from "../modules/order/OrderDetails";
 import OrderSummary from "../modules/order/OrderSummary";
 import Footer from "../components/layout/footer/Footer";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 
 const OrderFruitPage = () => {
-    const location = useLocation();
+  const location = useLocation();
+  const fruitInfo = { ...location.state };
 
-    const fruitInfo = { ...location.state };
+  const [orderInfo, setOrderInfo] = useState({
+    name: '',
+    address: '',
+    detailAddress: '',
+    phone: ''
+  });
 
-    console.log(fruitInfo);
-
-    return (
-        <FormContainer>
-        <FormLayout>
-            <MainColumn>
-                <OrderDetails fruitInfo={fruitInfo}/>
-            </MainColumn>
-            <SideColumn>
-                <OrderSummary fruitInfo={fruitInfo}/>
-            </SideColumn>
-        </FormLayout>
-        <Footer />
-        </FormContainer>
-    );
+  return (
+    <FormContainer>
+      <FormLayout>
+        <MainColumn>
+          <OrderDetails fruitInfo={fruitInfo} orderInfo={orderInfo} setOrderInfo={setOrderInfo} />
+        </MainColumn>
+        <SideColumn>
+          <OrderSummary fruitInfo={fruitInfo} orderInfo={orderInfo} />
+        </SideColumn>
+      </FormLayout>
+      <Footer />
+    </FormContainer>
+  );
 };
+
 
 const FormContainer = styled.main`
     width:100%;

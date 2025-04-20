@@ -1,32 +1,72 @@
 "use client";
-import * as React from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import OrderModal from "./components/OrderModal";
+import api from "../../api/axios";
 
-const OrderSummary = ({fruitInfo}) => {
-    return (
-      <SummarySection>
-        <ImageContainer>
-          <ProductImage src="https://cdn.builder.io/api/v1/image/assets/7adddd5587f24b91884c2915be4df62c/407ba89d6146db5c8d0deee3f46c6d8b7d667fe8?placeholderIfAbsent=true" alt="Product" />
-        </ImageContainer>
+const OrderSummary = ({ fruitInfo, orderInfo }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userId, setUserId] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
 
-        <OrderInfo>
-                <InfoBlock>
-                    <Label>수량</Label>
-                    <Value>{fruitInfo.cnt}개</Value>
-                </InfoBlock>
-                <Divider />
-                <InfoBlock>
-                    <Label>총 가격</Label>
-                    <Value>{fruitInfo.price}원</Value>
-                </InfoBlock>
-            </OrderInfo>
+  useEffect(() => {
+    setUserId(localStorage.getItem("userId"));
+    setUserName(localStorage.getItem("userName"));
+    setUserEmail(localStorage.getItem("userEmail"));
+  }, []);
 
-        <ButtonContainer>
-            <OrderButton>Place Order</OrderButton>
-        </ButtonContainer>
-      </SummarySection>
-    );
+  const handleOrder = async () => {
+    try {
+      await api.post("/orders", {
+        fruitId: fruitInfo.id,
+        cnt: fruitInfo.cnt,
+        price: fruitInfo.price,
+        userId,
+        userName,
+        userEmail,
+        orderName: orderInfo.name,
+        address: orderInfo.address,
+        detailAddress: orderInfo.detailAddress,
+        phone: orderInfo.phone
+      });
+
+      setIsModalOpen(true);
+    } catch (err) {
+      console.error("주문 실패", err);
+      alert("주문 중 오류가 발생했습니다.");
+    }
   };
+
+  
+  return (
+    <SummarySection>
+      <ImageContainer>
+        <ProductImage src="https://cdn.builder.io/api/v1/image/assets/7adddd5587f24b91884c2915be4df62c/407ba89d6146db5c8d0deee3f46c6d8b7d667fe8?placeholderIfAbsent=true" alt="Product" />
+      </ImageContainer>
+
+      <OrderInfo>
+              <InfoBlock>
+                  <Label>수량</Label>
+                  <Value>{fruitInfo.cnt}개</Value>
+              </InfoBlock>
+              <Divider />
+              <InfoBlock>
+                  <Label>총 가격</Label>
+                  <Value>{fruitInfo.price}원</Value>
+              </InfoBlock>
+          </OrderInfo>
+
+      <ButtonContainer>
+        <OrderButton onClick={handleOrder}>주문하기</OrderButton>
+      </ButtonContainer>
+
+      {isModalOpen && (
+        <OrderModal price={fruitInfo.price} onClose={() => setIsModalOpen(false)} />
+      )}
+    </SummarySection>
+  );
+};
   
 
 const SummarySection = styled.section`

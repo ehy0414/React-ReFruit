@@ -2,7 +2,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-const FormInput = ({ label, optional }) => {
+const FormInput = ({ label, value, onChange }) => {
   const [isFocused, setIsFocused] = React.useState(false);
 
   return (
@@ -13,6 +13,9 @@ const FormInput = ({ label, optional }) => {
       <InputField
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        type="text"
+        value={value} 
+        onChange={(e) => onChange(e.target.value)} 
       />
     </InputWrapper>
   );

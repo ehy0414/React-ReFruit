@@ -3,21 +3,26 @@ import * as React from "react";
 import styled from "styled-components";
 import FormInput from "./FormInput";
 
-const OrderDetails = ({fruitInfo}) => {
+const OrderDetails = ({ fruitInfo, orderInfo, setOrderInfo }) => {
+  const handleChange = (field, value) => {
+    setOrderInfo(prev => ({ ...prev, [field]: value }));
+  };
+
   return (
     <FormSection>
       <FormTitle>{fruitInfo.title}</FormTitle>
       <FormContainer>
         <FormFields>
-          <FormInput label="주문자 이름 작성" />
-          <FormInput label="배달지 작성" />
-          <FormInput label="상세주소" />
-          <FormInput label="휴대폰 번호" />
+          <FormInput label="주문자 이름 작성" value={orderInfo.name} onChange={val => handleChange('name', val)} />
+          <FormInput label="배달지 작성" value={orderInfo.address} onChange={val => handleChange('address', val)} />
+          <FormInput label="상세주소" value={orderInfo.detailAddress} onChange={val => handleChange('detailAddress', val)} />
+          <FormInput label="휴대폰 번호" value={orderInfo.phone} onChange={val => handleChange('phone', val)} />
         </FormFields>
       </FormContainer>
     </FormSection>
   );
 };
+
 
 const FormSection = styled.section`
   display: flex;

@@ -44,13 +44,53 @@
       "userId": "1744968463586",
       "type": "monthly"
     }
-    
   ],
   "wishlist": [
     {
       "id": "1744965978287",
       "userId": 1,
       "productId": 1
+    }
+  ],
+  "orders": [
+    {
+      "id": "4e4c",
+      "fruitId": "1",
+      "cnt": 1,
+      "price": "$120",
+      "userId": "1744968463586",
+      "userName": "test",
+      "userEmail": "test1@gmail.com",
+      "orderName": "홍길동",
+      "address": "전주대학교 공학1관 324호",
+      "detailAddress": "조교실",
+      "phone": "01012345678"
+    },
+    {
+      "id": "f4d2",
+      "fruitId": "1",
+      "cnt": 1,
+      "price": "$120",
+      "userId": "1744968463586",
+      "userName": "test",
+      "userEmail": "test1@gmail.com",
+      "orderName": "홍길동",
+      "address": "전주대학교 공학1관 324호",
+      "detailAddress": "조교실",
+      "phone": "01012345678"
+    },
+    {
+      "id": "fa4e",
+      "fruitId": "1",
+      "cnt": 1,
+      "price": "$120",
+      "userId": "1744968463586",
+      "userName": "test",
+      "userEmail": "test1@gmail.com",
+      "orderName": "홍길동2",
+      "address": "전주대학교 공학1관 2층",
+      "detailAddress": "229호",
+      "phone": "01012345670"
     }
   ]
 }
