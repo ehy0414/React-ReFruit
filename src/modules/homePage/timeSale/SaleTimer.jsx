@@ -26,13 +26,13 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const SaleTimer = ({title, subTitle, count}) => {
+const SaleTimer = ({title, subTitle, count, onExpire}) => {
   return (
     <SaleContainer>
       <ContentWrapper>
         <HeaderTitle title={title}/>
       </ContentWrapper>
-      <CountdownTimer subTitle={subTitle} count={count}/>
+      <CountdownTimer subTitle={subTitle} count={count} onExpire={onExpire}/>
     </SaleContainer>
   );
 };

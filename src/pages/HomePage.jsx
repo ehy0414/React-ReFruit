@@ -26,6 +26,7 @@ export function HomePage() {
     const [products, setProducts] = useState([]);
     const [saleProducts, setSaleProducts] = useState([]);
     const [monthlyProducts, setMonthlyProducts] = useState([]);
+    const [saleEnded, setSaleEnded] = useState(false);
 
     const getProducts = async () => {
         try {
@@ -48,8 +49,10 @@ export function HomePage() {
             <PromotionalBanner />
             <SaleTimer  title="오늘의 상품" 
                         subTitle="SALE 상품"
-                        count={true} />
-            <ProductList products={saleProducts}/>
+                        count={true}
+                        onExpire={() => setSaleEnded(true)} // 만료 시 상태 변경
+             />
+            <ProductList products={saleProducts} saleEnded={saleEnded}/>
             <ViewAllProductsButton path="/refruit/sale" />
             <Lines />
             <CategoryTitle />

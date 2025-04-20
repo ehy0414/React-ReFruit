@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import ProductCard from "./ProductCard";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,11 +20,20 @@ const Wrapper = styled.div`
   cursor: pointer;
 `;
 
-export function ProductList({products}) {
+export function ProductList({products, saleEnded}) {
   const wrapperRef = useRef(null);
+  const navigate = useNavigate();
   let isDown = false;
   let startX;
   let scrollLeft;
+
+  const handleClick = (product) => {
+    if (product.type === "sale" && saleEnded) {
+      alert("세일 기간이 마감되었습니다.");
+      return;
+    }
+    navigate(`/fruit/detail/${product.id}`);
+  };
 
   const handleMouseDown = (e) => {
     isDown = true;
@@ -59,7 +69,7 @@ export function ProductList({products}) {
       onMouseMove={handleMouseMove}
     >
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} onClick={() => handleClick(product)}/>
       ))}
     </Wrapper>
   );

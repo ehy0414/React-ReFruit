@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const userId = 1; // 임시 사용자 ID
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onClick }) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [wishlistId, setWishlistId] = useState(null);
   const navigate = useNavigate();
@@ -58,9 +58,7 @@ const ProductCard = ({ product }) => {
   
 
   return (
-    <CardWrapper onClick={() => {
-      navigate(`/fruit/detail/${product.id}`)
-    }}>
+    <CardWrapper onClick={onClick}>
       <ProductImageSection>
         <DiscountBadge>{product.discount}</DiscountBadge>
         <WishlistButton onClick={handleWishlistToggle}>

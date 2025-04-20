@@ -57,7 +57,7 @@ const SaleTitle = styled.h1`
   margin-right: 80px;
 `;
 
-const CountdownTimer = ({ subTitle, count, targetDate = "2025-04-18T23:59:59" }) => {
+const CountdownTimer = ({ subTitle, count, targetDate = "2025-04-20T23:59:59", onExpire }) => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
   function getTimeLeft() {
@@ -67,6 +67,7 @@ const CountdownTimer = ({ subTitle, count, targetDate = "2025-04-18T23:59:59" })
 
     if (diff <= 0) {
       return {
+        expired: true,
         days: "00",
         hours: "00",
         minutes: "00",
@@ -83,6 +84,7 @@ const CountdownTimer = ({ subTitle, count, targetDate = "2025-04-18T23:59:59" })
     const days = Math.floor(totalHours / 24);
 
     return {
+      expired: false,
       days: String(days).padStart(2, "0"),
       hours: String(hours).padStart(2, "0"),
       minutes: String(minutes).padStart(2, "0"),
@@ -94,7 +96,13 @@ const CountdownTimer = ({ subTitle, count, targetDate = "2025-04-18T23:59:59" })
     if (!count) return;
 
     const timer = setInterval(() => {
-      setTimeLeft(getTimeLeft());
+      const updated = getTimeLeft();
+      setTimeLeft(updated);
+
+      if (updated.expired && onExpire) {
+        onExpire();
+        clearInterval(timer);
+      }
     }, 1000);
 
     return () => clearInterval(timer);
@@ -129,5 +137,6 @@ const CountdownTimer = ({ subTitle, count, targetDate = "2025-04-18T23:59:59" })
     </TimerContainer>
   );
 };
+
 
 export default CountdownTimer;
