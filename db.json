@@ -13,8 +13,8 @@
       "title": "HAVIT HV-G92 Gamepad",
       "content": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
       "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58",
-      "currentPrice": "$120",
-      "originalPrice": "$160",
+      "currentPrice": "120",
+      "originalPrice": "160",
       "discount": "-40%",
       "reviewCount": 88,
       "userId": "1744968463586",
@@ -25,8 +25,8 @@
       "title": "Logitech G Pro X",
       "content": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
       "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58",
-      "currentPrice": "$150",
-      "originalPrice": "$200",
+      "currentPrice": "150",
+      "originalPrice": "200",
       "discount": "-25%",
       "reviewCount": 102,
       "userId": "1744968463586",
@@ -37,8 +37,8 @@
       "title": "Logitech G Pro X",
       "content": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
       "image": "/images/logo192.png",
-      "currentPrice": "$150",
-      "originalPrice": "$200",
+      "currentPrice": "150",
+      "originalPrice": "200",
       "discount": "-25%",
       "reviewCount": 102,
       "userId": "1744968463586",
@@ -91,6 +91,19 @@
       "address": "전주대학교 공학1관 2층",
       "detailAddress": "229호",
       "phone": "01012345670"
+    },
+    {
+      "id": "7eae",
+      "fruitId": "1",
+      "cnt": 4,
+      "price": "120",
+      "userId": null,
+      "userName": null,
+      "userEmail": null,
+      "orderName": "홍길동",
+      "address": "전주대학교 공학1관",
+      "detailAddress": "119호",
+      "phone": "01012348910"
     }
   ]
 }

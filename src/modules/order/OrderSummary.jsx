@@ -10,6 +10,10 @@ const OrderSummary = ({ fruitInfo, orderInfo }) => {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
 
+  const quantity = fruitInfo?.cnt ?? 0;
+  const price = fruitInfo?.price ?? 0;
+  const totalPrice = quantity * price;
+
   useEffect(() => {
     setUserId(localStorage.getItem("userId"));
     setUserName(localStorage.getItem("userName"));
@@ -17,26 +21,36 @@ const OrderSummary = ({ fruitInfo, orderInfo }) => {
   }, []);
 
   const handleOrder = async () => {
+    const { name, address, detailAddress, phone } = orderInfo;
+  
+    // 입력값 유효성 검사
+    if (!name || !address || !detailAddress || !phone) {
+      alert("모두 입력해주세요.");
+      return; // 주문 중단
+    }
+  
     try {
       await api.post("/orders", {
+        id: new Date.now.toString(),
         fruitId: fruitInfo.id,
         cnt: fruitInfo.cnt,
         price: fruitInfo.price,
         userId,
         userName,
         userEmail,
-        orderName: orderInfo.name,
-        address: orderInfo.address,
-        detailAddress: orderInfo.detailAddress,
-        phone: orderInfo.phone
+        orderName: name,
+        address,
+        detailAddress,
+        phone
       });
-
+  
       setIsModalOpen(true);
     } catch (err) {
       console.error("주문 실패", err);
       alert("주문 중 오류가 발생했습니다.");
     }
   };
+  
 
   
   return (
@@ -53,7 +67,7 @@ const OrderSummary = ({ fruitInfo, orderInfo }) => {
               <Divider />
               <InfoBlock>
                   <Label>총 가격</Label>
-                  <Value>{fruitInfo.price}원</Value>
+                  <Value>{totalPrice.toLocaleString()}원</Value>
               </InfoBlock>
           </OrderInfo>
 
@@ -62,7 +76,7 @@ const OrderSummary = ({ fruitInfo, orderInfo }) => {
       </ButtonContainer>
 
       {isModalOpen && (
-        <OrderModal price={fruitInfo.price} onClose={() => setIsModalOpen(false)} />
+        <OrderModal price={totalPrice} onClose={() => setIsModalOpen(false)} />
       )}
     </SummarySection>
   );
