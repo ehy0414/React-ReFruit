@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif, "Hakgyoansim Allimjang OTF B", "Hakgyoansim Allimjang OTF R";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden; /* 가로 스크롤 숨김 */
@@ -12,3 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "Hakgyoansim Allimjang OTF B";
+  src: url("./fonts/Hakgyoansim\ Allimjang\ OTF\ B.otf") format("truetype");
+}
+@font-face {
+  font-family: "Hakgyoansim Allimjang OTF R";
+  src: url("./fonts/Hakgyoansim\ Allimjang\ OTF\ R.otf") format("truetype");
+}
+

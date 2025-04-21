@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import icons from "../../../assets/images/image.png";
+import logo from "./images/logo.png";
 
 const HeaderDesign = () => {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ const HeaderDesign = () => {
 
   return (
     <HeaderContainer>
-      <LogoText onClick={() => {navigate("/")}}>로고</LogoText>
+      <LogoText src={logo} onClick={() => {navigate("/")}} />
 
       <Nav>
         <MenuItem onClick={() => {navigate("/")}}>메인화면</MenuItem>
@@ -147,12 +148,15 @@ const HeaderContainer = styled.header`
   }
 `;
 
-const LogoText = styled.h1`
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  color: #000;
+const LogoText = styled.img`
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
+  display: flex;
+  margin-top: 10px;
+  width:65px;
+  height:65px;
 `;
 
 const Nav = styled.nav`
@@ -170,7 +174,7 @@ const Nav = styled.nav`
 `;
 
 const MenuItem = styled.button`
-  font-family: "Poppins", sans-serif;
+  font-family: Hakgyoansim Allimjang OTF R;
   font-size: 16px;
   color: #000;
   cursor: pointer;

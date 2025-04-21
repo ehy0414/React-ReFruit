@@ -2,11 +2,11 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const CategoryItem = ({ icon, text, path }) => {
+const CategoryItem = ({ src, text, path }) => {
   const navigate = useNavigate();
   return (
     <Article onClick={() => {navigate(`${path}`)}}>
-      <CategoryIcon src={icon} alt={`${text} category icon`} className="category-icon" />
+      <CategoryIcon src={src} alt={`${text} category icon`} className="category-icon" />
       <p className="category-text">{text}</p>
     </Article>
   );

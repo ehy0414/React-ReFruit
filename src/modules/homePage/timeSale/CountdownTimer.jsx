@@ -46,18 +46,17 @@ const Separator = styled.div`
   margin-top: 26px;
 `;
 
-const SaleTitle = styled.h1`
+const SaleTitle = styled.p`
   color: #000;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
-  font-size: 36px;
-  font-weight: 600;
+  font-family: Hakgyoansim Allimjang OTF B;
+  font-size: 32px;
   line-height: 1;
   letter-spacing: 1.44px;
   margin-top: 38px;
   margin-right: 80px;
 `;
 
-const CountdownTimer = ({ subTitle, count, targetDate = "2025-04-20T23:59:59", onExpire }) => {
+const CountdownTimer = ({ subTitle, count, targetDate = "2025-05-10T23:59:59", onExpire }) => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
   function getTimeLeft() {

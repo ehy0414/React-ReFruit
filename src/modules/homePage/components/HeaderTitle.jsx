@@ -36,15 +36,11 @@ const RedIndicator = styled.div`
 
 const TodayProduct = styled.h2`
   color: #db4444;
-  font-family:
-    Poppins,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Hakgyoansim Allimjang OTF R;
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
+  letter-spacing: 1px;
   align-self: stretch;
   margin-top: auto;
   margin-bottom: auto;

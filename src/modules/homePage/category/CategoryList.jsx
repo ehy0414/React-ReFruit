@@ -1,33 +1,39 @@
 "use client";
 import styled from "styled-components";
 import CategoryItem from "./CategoryItem";
+import appleIcon from "./images/apple.png";
+import grapeIcon from "./images/grape.png";
+import kiwiIcon from "./images/kiwi.png";
+import mangoIcon from "./images/mango.png";
+import watermelonIcon from "./images/watermelon.png";
+import orangeIcon from "./images/orange.png";
 
 const CategoryList = () => {
   const categories = [
-    { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/980549b8142fb4c2077d1589a566fbbd456e6ff9?placeholderIfAbsent=true&apiKey=7adddd5587f24b91884c2915be4df62c", 
+    { icon: appleIcon, 
       text: "사과",
       path: "/refruit/apple" },
-    { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/ad6ec640e35a0a86c223a6073cd7dc1a51d64e2d?placeholderIfAbsent=true&apiKey=7adddd5587f24b91884c2915be4df62c", 
+    { icon: orangeIcon, 
       text: "오렌지",
       path: "/refruit/orange" },
-    { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/773eab8b4795462c8a5d755c3b00663cda6d6f8f?placeholderIfAbsent=true&apiKey=7adddd5587f24b91884c2915be4df62c", 
+    { icon: grapeIcon, 
       text: "포도",
       path: "/refruit/grape" },
-    { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/773eab8b4795462c8a5d755c3b00663cda6d6f8f?placeholderIfAbsent=true&apiKey=7adddd5587f24b91884c2915be4df62c", 
-      text: "포도",
+    { icon: kiwiIcon, 
+      text: "키위",
       path: "/refruit/grape" },
-    { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/773eab8b4795462c8a5d755c3b00663cda6d6f8f?placeholderIfAbsent=true&apiKey=7adddd5587f24b91884c2915be4df62c", 
-      text: "포도",
+    { icon: watermelonIcon, 
+      text: "수박",
       path: "/refruit/grape" },
-    { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/773eab8b4795462c8a5d755c3b00663cda6d6f8f?placeholderIfAbsent=true&apiKey=7adddd5587f24b91884c2915be4df62c", 
-      text: "포도",
+    { icon: mangoIcon, 
+      text: "망고",
       path: "/refruit/grape" }
   ];
 
   return (
     <Section>
       {categories.map((category, index) => (
-        <CategoryItem key={index} icon={category.icon} text={category.text} path={category.path}/>
+        <CategoryItem key={index} src={category.icon} text={category.text} path={category.path}/>
       ))}
     </Section>
   );
