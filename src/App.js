@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import JoinPage from './pages/JoinPage';
 import FruitDetailPage from './pages/FruitDetailPage';
 import OrderFruitPage from './pages/OrderFruitPage';
+import WishlistPage from './pages/WishlistPage';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
 
         {/* 상품 구매페이지 */}
         <Route path='/purchase/:id' element={<OrderFruitPage />} />
+
+        {/* 위시리스트 페이지 */}
+        <Route path='/wishlist' element={<WishlistPage />} />
 
 
       </Routes>

@@ -47,6 +47,10 @@ const ProductCard = ({ product, onClick }) => {
           id : Date.now().toString(),
           userId,
           productId: product.id,
+          title: product.title,
+          currentPrice: product.currentPrice,
+          originalPrice: product.originalPrice,
+          productImage: product.image
         });
         setIsWishlisted(true);
         setWishlistId(res.data.id);
@@ -61,7 +65,12 @@ const ProductCard = ({ product, onClick }) => {
     <CardWrapper onClick={onClick}>
       <ProductImageSection>
         <DiscountBadge>{product.discount}</DiscountBadge>
-        <WishlistButton onClick={handleWishlistToggle}>
+        <WishlistButton
+          onClick={(e) => {
+            e.stopPropagation(); // 이벤트 버블링 중단
+            handleWishlistToggle();
+          }}
+        >
           {isWishlisted ? <RedHeartIcon /> : <HeartIcon />}
         </WishlistButton>
         <ImageContainer>
