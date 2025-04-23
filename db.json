@@ -9,7 +9,7 @@
   ],
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "title": "HAVIT HV-G92 Gamepad",
       "content": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
       "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58",
@@ -21,7 +21,7 @@
       "type": "sale"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Logitech G Pro X",
       "content": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
       "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58",
@@ -33,7 +33,7 @@
       "type": "monthly"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Logitech G Pro X",
       "content": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
       "image": "/images/logo192.png",
@@ -99,6 +99,15 @@
       "currentPrice": "120",
       "originalPrice": "160",
       "productImage": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58"
+    },
+    {
+      "id": "1745383126960",
+      "userId": "1744968463586",
+      "productId": "1",
+      "title": "HAVIT HV-G92 Gamepad",
+      "currentPrice": "120",
+      "originalPrice": "160",
+      "productImage": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58"
     }
   ],
   "orders": [
@@ -153,6 +162,19 @@
       "address": "전주대학교 공학1관",
       "detailAddress": "119호",
       "phone": "01012348910"
+    },
+    {
+      "id": "function now() { [native code] }",
+      "fruitId": "1",
+      "cnt": 3,
+      "price": "120",
+      "userId": "1744968463586",
+      "userName": "test",
+      "userEmail": "test1@gmail.com",
+      "orderName": "가나다",
+      "address": "전주시",
+      "detailAddress": "205호",
+      "phone": "01012345678"
     }
   ]
 }

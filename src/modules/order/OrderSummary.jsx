@@ -31,7 +31,7 @@ const OrderSummary = ({ fruitInfo, orderInfo }) => {
   
     try {
       await api.post("/orders", {
-        id: new Date.now.toString(),
+        id: Date.now.toString(),
         fruitId: fruitInfo.id,
         cnt: fruitInfo.cnt,
         price: fruitInfo.price,
