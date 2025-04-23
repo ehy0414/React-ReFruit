@@ -7,7 +7,7 @@ const WishlistContext = createContext();
 export const WishlistProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState([]);
 
-  const userId = localStorage.getItem("userId") || 1;
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     const fetchWishlist = async () => {
