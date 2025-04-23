@@ -7,6 +7,12 @@ import Footer from "../components/layout/footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { useWishlist } from "../context/WishListContext";
 
+const Wrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+`;
+
 const Container = styled.main`
   display: flex;
   flex-direction: column;
@@ -100,7 +106,7 @@ export const WishlistPage = () => {
   const hasPrevPage = page > 1;
 
   return (
-    <>
+    <Wrapper>
       <Container>
         <Title>Wishlist ({wishlist.length})</Title>
         <CardGrid>
@@ -127,7 +133,7 @@ export const WishlistPage = () => {
         </Pagination>
       </Container>
       <Footer />
-    </>
+    </Wrapper>
   );
 };
 
