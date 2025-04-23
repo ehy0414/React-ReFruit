@@ -4,6 +4,7 @@ import { WishlistCard } from "../modules/wishlist/WishlistCard";
 import { useState, useEffect } from "react";
 import api from "../api/axios";
 import Footer from "../components/layout/footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.main`
   display: flex;
@@ -65,19 +66,39 @@ const ITEMS_PER_PAGE = 20;
 export const WishlistPage = () => {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
   // ✅ 데이터 가져오기
   useEffect(() => {
     const fetchProducts = async () => {
-      try {
-        const res = await api.get("/wishlist"); // 엔드포인트 수정 가능
-        setProducts(res.data);
-      } catch (err) {
-        console.error("Failed to fetch products:", err);
-      }
+        const userId = localStorage.getItem("userId");
+        if(userId) {
+            try {
+                const res = await api.get(`/wishlist?userId=${userId}`); // 엔드포인트 수정 가능
+                setProducts(res.data);
+              } catch (err) {
+                console.error("Failed to fetch products:", err);
+              }
+        } else {
+            alert("로그인 후 이용가능합니다.");
+            navigate("/login");
+        }
+
     };
     fetchProducts();
   }, []);
+
+  //위시리스트 삭제
+  const handleDelete = async (id) => {
+    try {
+      await api.delete(`/wishlist/${id}`);
+      setProducts((prev) => prev.filter((item) => item.id !== id)); // 삭제된 항목 제거
+      alert("삭제 되었습니다");
+    } catch (err) {
+      console.error("삭제 실패:", err);
+    }
+  };
+
 
   // ✅ 페이지 바뀔 때 상단 이동
   useEffect(() => {
@@ -104,6 +125,7 @@ export const WishlistPage = () => {
               originalPrice={item.originalPrice}
               discount={item.discount}
               imageUrl={item.productImage}
+              onDelete={() => handleDelete(item.id)}
             />
           ))}
         </CardGrid>

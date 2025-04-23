@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { IconButton } from "./IconButton";
 import { CartButton } from "./CartButton";
 import { DeleteIcon } from "./Icons";
+import { useNavigate } from "react-router-dom";
+import api from "../../api/axios";
 
 const Card = styled.article`
     width: 235px;
@@ -100,8 +102,11 @@ export const WishlistCard = ({
   onDelete,
   onAddToCart,
 }) => {
+
+  const navigate = useNavigate();
+
   return (
-    <Card>
+    <Card onClick={() => {navigate("")}}>
       <ImageContainer>
         {discount && <DiscountBadge>{discount}</DiscountBadge>}
         <ProductImage src={imageUrl} alt={imageAlt} />
@@ -111,7 +116,7 @@ export const WishlistCard = ({
       </ImageContainer>
       <CartButton onClick={onAddToCart} />
       <ProductInfo>
-        <ProductName>{name}sadasdasdsadsa</ProductName>
+        <ProductName>{name}</ProductName>
         <PriceContainer>
           <Price>${price}</Price>
           {originalPrice && <OriginalPrice>${originalPrice}</OriginalPrice>}
