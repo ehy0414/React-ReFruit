@@ -7,10 +7,12 @@ import JoinPage from './pages/JoinPage';
 import FruitDetailPage from './pages/FruitDetailPage';
 import OrderFruitPage from './pages/OrderFruitPage';
 import WishlistPage from './pages/WishlistPage';
+import { WishlistProvider } from './context/WishListContext';
 
 function App() {
   return (
     <BrowserRouter>
+      <WishlistProvider>
       <Header />
       
       <Routes>
@@ -29,6 +31,7 @@ function App() {
 
 
       </Routes>
+      </WishlistProvider>
     </BrowserRouter>
   );
 }

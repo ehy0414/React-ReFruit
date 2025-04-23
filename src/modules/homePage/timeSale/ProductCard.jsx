@@ -2,77 +2,58 @@
 import styled from "styled-components";
 import { RedHeartIcon, HeartIcon, StarRating } from "./Icons";
 import React, { useEffect, useState } from "react";
-import api from "../../../api/axios";
 import { useNavigate } from "react-router-dom";
-
-const userId = 1; // 임시 사용자 ID
+import { useWishlist } from "../../../context/WishListContext";
 
 const ProductCard = ({ product, onClick }) => {
-  const [isWishlisted, setIsWishlisted] = useState(false);
-  const [wishlistId, setWishlistId] = useState(null);
+  const {
+    isWishlisted,
+    addToWishlist,
+    removeFromWishlist,
+    getWishlistId,
+  } = useWishlist();
+
+  const [localWishlistId, setLocalWishlistId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // 컴포넌트 마운트 시 위시리스트 확인
-    const checkWishlist = async () => {
-      try {
-        const res = await api.get(`/wishlist?userId=${userId}&productId=${product.id}`);
-        if (res.data.length > 0) {
-          setIsWishlisted(true);
-          setWishlistId(res.data[0].id);
-        }
-      } catch (err) {
-        console.error("Error checking wishlist", err);
-      }
-    };
-    checkWishlist();
-  }, [product.id]);
+    const id = getWishlistId(product.id);
+    if (id) {
+      setLocalWishlistId(id);
+    }
+  }, [getWishlistId, product.id]);
 
-  const handleWishlistToggle = async () => {
+  const handleWishlistToggle = async (e) => {
+    e.stopPropagation();
     const userId = localStorage.getItem("userId");
-
     if (!userId) {
       alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
       navigate("/login");
       return;
     }
 
-    try {
-      if (isWishlisted) {
-        await api.delete(`/wishlist/${wishlistId}`);
-        setIsWishlisted(false);
-        setWishlistId(null);
-      } else {
-        const res = await api.post("/wishlist", {
-          id : Date.now().toString(),
-          userId,
-          productId: product.id,
-          title: product.title,
-          currentPrice: product.currentPrice,
-          originalPrice: product.originalPrice,
-          productImage: product.image
-        });
-        setIsWishlisted(true);
-        setWishlistId(res.data.id);
-      }
-    } catch (err) {
-      console.error("Wishlist toggle failed", err);
+    if (isWishlisted(product.id)) {
+      await removeFromWishlist(localWishlistId);
+      setLocalWishlistId(null);
+    } else {
+      await addToWishlist(product);
+      const newId = getWishlistId(product.id);
+      setLocalWishlistId(newId);
     }
   };
+
+
   
 
   return (
     <CardWrapper onClick={onClick}>
       <ProductImageSection>
         <DiscountBadge>{product.discount}</DiscountBadge>
-        <WishlistButton
-          onClick={(e) => {
-            e.stopPropagation(); // 이벤트 버블링 중단
-            handleWishlistToggle();
-          }}
-        >
-          {isWishlisted ? <RedHeartIcon /> : <HeartIcon />}
+
+        <WishlistButton onClick={handleWishlistToggle}>
+          {isWishlisted(product.id) ? <RedHeartIcon /> : <HeartIcon />}
         </WishlistButton>
+
         <ImageContainer>
           <ProductImg src={product.image} alt={product.title} />
         </ImageContainer>

@@ -20,6 +20,6 @@ const Button = styled.button`
 export const CartButton = ({ onClick }) => (
   <Button onClick={onClick}>
     <CartIcon />
-    <span>Add To Cart</span>
+    <span>바로 구매하기</span>
   </Button>
 );

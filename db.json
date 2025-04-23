@@ -47,22 +47,31 @@
   ],
   "wishlist": [
     {
-      "id": "1745401878612",
+      "id": "1745405213465",
       "userId": "1744968463586",
-      "productId": "2",
-      "title": "Logitech G Pro X",
-      "currentPrice": "150",
-      "originalPrice": "200",
+      "productId": "1",
+      "title": "HAVIT HV-G92 Gamepad",
+      "currentPrice": "120",
+      "originalPrice": "160",
       "productImage": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58"
     },
     {
-      "id": "1745401880542",
+      "id": "1745405227416",
       "userId": "1744968463586",
       "productId": "3",
       "title": "Logitech G Pro X",
       "currentPrice": "150",
       "originalPrice": "200",
       "productImage": "/images/logo192.png"
+    },
+    {
+      "id": "1745405228590",
+      "userId": "1744968463586",
+      "productId": "2",
+      "title": "Logitech G Pro X",
+      "currentPrice": "150",
+      "originalPrice": "200",
+      "productImage": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58"
     }
   ],
   "orders": [

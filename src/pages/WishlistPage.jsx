@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import api from "../api/axios";
 import Footer from "../components/layout/footer/Footer";
 import { useNavigate } from "react-router-dom";
+import { useWishlist } from "../context/WishListContext";
 
 const Container = styled.main`
   display: flex;
@@ -64,40 +65,26 @@ const Button = styled.button`
 const ITEMS_PER_PAGE = 20;
 
 export const WishlistPage = () => {
-  const [products, setProducts] = useState([]);
-  const [page, setPage] = useState(1);
-  const navigate = useNavigate();
+    const { wishlist, removeFromWishlist } = useWishlist();
+    const [page, setPage] = useState(1);
+    const navigate = useNavigate();
 
-  // ✅ 데이터 가져오기
-  useEffect(() => {
-    const fetchProducts = async () => {
+    useEffect(() => {
         const userId = localStorage.getItem("userId");
-        if(userId) {
-            try {
-                const res = await api.get(`/wishlist?userId=${userId}`); // 엔드포인트 수정 가능
-                setProducts(res.data);
-              } catch (err) {
-                console.error("Failed to fetch products:", err);
-              }
-        } else {
+        if (!userId) {
             alert("로그인 후 이용가능합니다.");
             navigate("/login");
         }
+    }, [navigate]);
 
+    const handleDelete = async (id) => {
+        try {
+            await removeFromWishlist(id); // context 함수 사용
+            alert("삭제 되었습니다");
+        } catch (err) {
+            console.error("삭제 실패:", err);
+        }
     };
-    fetchProducts();
-  }, []);
-
-  //위시리스트 삭제
-  const handleDelete = async (id) => {
-    try {
-      await api.delete(`/wishlist/${id}`);
-      setProducts((prev) => prev.filter((item) => item.id !== id)); // 삭제된 항목 제거
-      alert("삭제 되었습니다");
-    } catch (err) {
-      console.error("삭제 실패:", err);
-    }
-  };
 
 
   // ✅ 페이지 바뀔 때 상단 이동
@@ -107,15 +94,15 @@ export const WishlistPage = () => {
 
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
-  const currentItems = products.slice(startIndex, endIndex);
+  const currentItems = wishlist.slice(startIndex, endIndex);
 
-  const hasNextPage = endIndex < products.length;
+  const hasNextPage = endIndex < wishlist.length;
   const hasPrevPage = page > 1;
 
   return (
     <>
       <Container>
-        <Title>Wishlist ({products.length})</Title>
+        <Title>Wishlist ({wishlist.length})</Title>
         <CardGrid>
           {currentItems.map((item) => (
             <WishlistCard
