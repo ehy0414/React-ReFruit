@@ -113,7 +113,7 @@ export const WishlistPage = () => {
           {currentItems.map((item) => (
             <WishlistCard
               key={item.id}
-              id={item.id}
+              id={item.productId}
               name={item.title}
               price={item.currentPrice}
               originalPrice={item.originalPrice}

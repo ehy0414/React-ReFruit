@@ -14,6 +14,7 @@ const Card = styled.article`
     gap: 12px;
     position: relative;
     background-color: #f5f5f5;
+    cursor: pointer;
 
     @media (max-width: 991px) {
         width: 45%;
@@ -117,7 +118,7 @@ export const WishlistCard = ({
   };
 
   return (
-    <Card onClick={(e) => e.stopPropagation()}>
+    <Card onClick={() => {navigate(`/fruit/detail/${id}`)}}>
       <ImageContainer>
         {discount && <DiscountBadge>{discount}</DiscountBadge>}
         <ProductImage src={imageUrl} alt={imageAlt} />
