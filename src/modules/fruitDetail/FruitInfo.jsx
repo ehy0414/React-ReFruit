@@ -18,7 +18,8 @@ export const FruitInfo = ({product}) => {
         id: id,
         title: product.title,
         price: product.currentPrice,
-        cnt : quantity
+        cnt : quantity,
+        img: product.image
       }
         navigate(`/purchase/${id}`, { state: data });
     };
