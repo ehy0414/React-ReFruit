@@ -93,20 +93,32 @@ const OriginalPrice = styled.span`
 `;
 
 export const WishlistCard = ({
+  id,
   name,
   price,
   originalPrice,
   discount,
   imageUrl,
   imageAlt,
-  onDelete,
-  onAddToCart,
+  onDelete
 }) => {
 
   const navigate = useNavigate();
 
+  const handdleBuy = (e) => {
+    e.stopPropagation();
+    const data = {
+      id,
+      title: name,
+      price,
+      cnt: 1,
+      img: imageUrl
+    };
+    navigate(`/purchase/${id}`, {state: data})
+  };
+
   return (
-    <Card onClick={() => {navigate("")}}>
+    <Card onClick={(e) => e.stopPropagation()}>
       <ImageContainer>
         {discount && <DiscountBadge>{discount}</DiscountBadge>}
         <ProductImage src={imageUrl} alt={imageAlt} />
@@ -114,12 +126,12 @@ export const WishlistCard = ({
           <DeleteIcon />
         </IconButton>
       </ImageContainer>
-      <CartButton onClick={onAddToCart} />
+      <CartButton onClick={handdleBuy} />
       <ProductInfo>
         <ProductName>{name}</ProductName>
         <PriceContainer>
-          <Price>${price}</Price>
-          {originalPrice && <OriginalPrice>${originalPrice}</OriginalPrice>}
+          <Price>{price}원</Price>
+          {originalPrice && <OriginalPrice>{originalPrice}원</OriginalPrice>}
         </PriceContainer>
       </ProductInfo>
     </Card>

@@ -56,7 +56,7 @@ const OrderSummary = ({ fruitInfo, orderInfo }) => {
   return (
     <SummarySection>
       <ImageContainer>
-        <ProductImage src="https://cdn.builder.io/api/v1/image/assets/7adddd5587f24b91884c2915be4df62c/407ba89d6146db5c8d0deee3f46c6d8b7d667fe8?placeholderIfAbsent=true" alt="Product" />
+        <ProductImage src={fruitInfo.img} alt="Product" />
       </ImageContainer>
 
       <OrderInfo>
