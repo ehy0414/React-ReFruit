@@ -129,35 +129,6 @@ const ReviewCount = styled.span`
   opacity: 0.5;
 `;
 
-const StockInfo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  color: #0f6;
-  justify-content: start;
-`;
-
-const Divider = styled.div`
-  opacity: 0.5;
-  border-color: rgba(0, 0, 0, 1);
-  border-style: solid;
-  border-width: 1px;
-  background-color: #000;
-  align-self: stretch;
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 0px;
-  flex-shrink: 0;
-  height: 16px;
-`;
-
-const StockStatus = styled.span`
-  opacity: 0.6;
-  align-self: stretch;
-  margin-top: auto;
-  margin-bottom: auto;
-`;
-
 const ProductPrice = styled.div`
   color: #000;
   font-family:
@@ -218,15 +189,4 @@ const BuyButton = styled.button`
   @media (max-width: 991px) {
     padding: 10px 20px;
   }
-`;
-
-const WishlistButton = styled.img`
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 42px;
-  border-radius: 4px;
-  align-self: start;
-  flex-shrink: 0;
-  cursor: pointer;
 `;

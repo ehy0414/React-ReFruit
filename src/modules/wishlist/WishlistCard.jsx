@@ -4,7 +4,6 @@ import { IconButton } from "./IconButton";
 import { CartButton } from "./CartButton";
 import { DeleteIcon } from "./Icons";
 import { useNavigate } from "react-router-dom";
-import api from "../../api/axios";
 
 const Card = styled.article`
     width: 235px;
