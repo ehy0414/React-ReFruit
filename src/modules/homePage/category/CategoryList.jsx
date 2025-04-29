@@ -21,13 +21,13 @@ const CategoryList = () => {
       path: "/refruit/grape" },
     { icon: kiwiIcon, 
       text: "키위",
-      path: "/refruit/grape" },
+      path: "/refruit/kiwi" },
     { icon: watermelonIcon, 
       text: "수박",
-      path: "/refruit/grape" },
+      path: "/refruit/watermelon" },
     { icon: mangoIcon, 
       text: "망고",
-      path: "/refruit/grape" }
+      path: "/refruit/mango" }
   ];
 
   return (
