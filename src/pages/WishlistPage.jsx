@@ -83,7 +83,8 @@ export const WishlistPage = () => {
         }
     }, [navigate]);
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (e, id) => {
+      e.stopPropagation();
         try {
             await removeFromWishlist(id); // context 함수 사용
             alert("삭제 되었습니다");
@@ -119,7 +120,7 @@ export const WishlistPage = () => {
               originalPrice={item.originalPrice}
               discount={item.discount}
               imageUrl={item.productImage}
-              onDelete={() => handleDelete(item.id)}
+              onDelete={(e) => handleDelete(e, item.id)}
             />
           ))}
         </CardGrid>

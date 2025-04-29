@@ -56,22 +56,13 @@
       "productImage": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58"
     },
     {
-      "id": "1745405227416",
+      "id": "1745820385580",
       "userId": "1744968463586",
       "productId": "3",
       "title": "Logitech G Pro X",
       "currentPrice": "150",
       "originalPrice": "200",
       "productImage": "/images/logo192.png"
-    },
-    {
-      "id": "1745405228590",
-      "userId": "1744968463586",
-      "productId": "2",
-      "title": "Logitech G Pro X",
-      "currentPrice": "150",
-      "originalPrice": "200",
-      "productImage": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58"
     }
   ],
   "orders": [

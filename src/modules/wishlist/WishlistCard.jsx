@@ -118,11 +118,13 @@ export const WishlistCard = ({
   };
 
   return (
-    <Card onClick={() => {navigate(`/fruit/detail/${id}`)}}>
+    <Card onClick={(e) => {
+        e.stopPropagation();
+        navigate(`/fruit/detail/${id}`)}}>
       <ImageContainer>
         {discount && <DiscountBadge>{discount}</DiscountBadge>}
         <ProductImage src={imageUrl} alt={imageAlt} />
-        <IconButton onClick={onDelete} ariaLabel="Remove from wishlist">
+        <IconButton onClick={(e) => onDelete(e)} ariaLabel="Remove from wishlist">
           <DeleteIcon />
         </IconButton>
       </ImageContainer>
