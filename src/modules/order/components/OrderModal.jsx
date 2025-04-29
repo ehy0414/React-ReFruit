@@ -1,18 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import qrImage from "../assets/qr.png";
+import { useNavigate } from "react-router-dom";
 
-const OrderModal = ({ price, onClose }) => {
+const OrderModal = ({ price }) => {
+  const navigate = useNavigate();
+  const handleClose = () => {
+    alert("주문이 완료되었습니다!");
+    navigate("/");  // 홈페이지로 이동
+  };
   return (
     <ModalOverlay>
       <ModalBox>
         <>
             <Title>주문해주셔서 감사합니다!</Title>
             <Subtitle>주문하신 가격은 {price}원입니다. 송금해주세요!</Subtitle>
+            <Subtitle>송금 후 닫기 버튼을 눌러주세요!</Subtitle>
             <QRImage src={qrImage} alt="QR code" />
         </><br/>
         
-        <CloseButton onClick={onClose}>닫기</CloseButton>
+        <CloseButton onClick={handleClose}>닫기</CloseButton>
       </ModalBox>
     </ModalOverlay>
   );

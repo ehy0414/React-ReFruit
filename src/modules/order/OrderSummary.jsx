@@ -31,7 +31,7 @@ const OrderSummary = ({ fruitInfo, orderInfo }) => {
   
     try {
       await api.post("/orders", {
-        id: Date.now.toString(),
+        id: Date.now().toString(),
         fruitId: fruitInfo.id,
         cnt: fruitInfo.cnt,
         price: fruitInfo.price,
@@ -76,7 +76,7 @@ const OrderSummary = ({ fruitInfo, orderInfo }) => {
       </ButtonContainer>
 
       {isModalOpen && (
-        <OrderModal price={totalPrice} onClose={() => setIsModalOpen(false)} />
+        <OrderModal price={totalPrice} />
       )}
     </SummarySection>
   );
