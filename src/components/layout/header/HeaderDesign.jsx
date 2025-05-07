@@ -10,7 +10,7 @@ const HeaderDesign = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // 실제 로그인 상태로 교체 가능
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
   const handleUserIconClick = () => {
     setDropdownOpen(prev => !prev);

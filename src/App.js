@@ -8,6 +8,7 @@ import FruitDetailPage from './pages/FruitDetailPage';
 import OrderFruitPage from './pages/OrderFruitPage';
 import WishlistPage from './pages/WishlistPage';
 import { WishlistProvider } from './context/WishListContext';
+import SearchPage from './pages/SearchPage';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         {/* 위시리스트 페이지 */}
         <Route path='/wishlist' element={<WishlistPage />} />
 
+        {/* 검색 결과 페이지 */}
+        <Route path="/search" element={<SearchPage />} />
 
       </Routes>
       </WishlistProvider>
