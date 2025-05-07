@@ -9,10 +9,11 @@ import {
 } from "./BannerComponents";
 import image1 from "./assets/image1.png";
 import image2 from "./assets/image2.png";
+import image3 from "./assets/image3.png";
 
 const banners = [
   {
-    title: "어디 농산물가게",
+    title: "1번째 농산물가게",
     image: `${image1}`,
     link: "/store-1",
   },
@@ -23,19 +24,19 @@ const banners = [
   },
   {
     title: "3번째 농산물가게",
-    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/sample3",
+    image: `${image3}`,
     link: "/store-3",
   },
-  {
-    title: "4번째 농산물가게",
-    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/sample4",
-    link: "/store-4",
-  },
-  {
-    title: "5번째 농산물가게",
-    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/sample5",
-    link: "/store-5",
-  },
+  // {
+  //   title: "4번째 농산물가게",
+  //   image: "https://cdn.builder.io/api/v1/image/assets/TEMP/sample4",
+  //   link: "/store-4",
+  // },
+  // {
+  //   title: "5번째 농산물가게",
+  //   image: "https://cdn.builder.io/api/v1/image/assets/TEMP/sample5",
+  //   link: "/store-5",
+  // },
 ];
 
 const PromotionalBanner = () => {
