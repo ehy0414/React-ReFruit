@@ -65,8 +65,8 @@ const HeaderDesign = () => {
 
       <Nav>
         <MenuItem onClick={() => {navigate("/")}}>메인화면</MenuItem>
-        <MenuItem onClick={() => {navigate("/")}}>베스트셀러</MenuItem>
-        <MenuItem onClick={() => {navigate("/")}}>추천상품</MenuItem>
+        <MenuItem onClick={() => {navigate("/refruit/most")}}>베스트셀러</MenuItem>
+        <MenuItem onClick={() => {navigate("/refruit/sale")}}>추천상품</MenuItem>
         <MenuItem onClick={() => {navigate("/")}}>상품리뷰</MenuItem>
       </Nav>
 
