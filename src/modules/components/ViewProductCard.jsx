@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ViewProductCard = ({ product }) => {
+const ViewProductCard = ({ product, onClick }) => {
   return (
-    <Card>
+    <Card onClick={onClick}>
       <ImageWrapper>
         <ProductImage src={product.image} alt={product.title} />
       </ImageWrapper>

@@ -2,9 +2,11 @@ import styled from "styled-components";
 import ViewProductCard from "../modules/components/ViewProductCard";
 import { useEffect, useState } from "react";
 import api from "../api/axios";
+import { useNavigate } from "react-router-dom";
 
 const ViewSaleFruitPage = () => {
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate();
 
     const getProducts = async () => {
             try {
@@ -17,13 +19,17 @@ const ViewSaleFruitPage = () => {
     
         useEffect(() => {
             getProducts();
-        },[])
+        },[]);
+
+        const handleClick = (products) => {
+          navigate(`/fruit/detail/${products.id}`);
+        };
 
     return (
         <Container>
           <Title>Sale 상품 목록</Title>
           {products.map((product) => (
-          <ViewProductCard key={product.id} product={product} />
+          <ViewProductCard key={product.id} product={product} onClick={()=> {handleClick(product)}}/>
         ))}
         </Container>
     );
