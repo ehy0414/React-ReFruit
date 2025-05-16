@@ -61,12 +61,12 @@ const ProductCard = ({ product, onClick }) => {
       <ProductInfo>
         <ProductTitle>{product.title}</ProductTitle>
         <PriceContainer>
-          <CurrentPrice>{product.currentPrice}</CurrentPrice>
-          <OriginalPrice>{product.originalPrice}</OriginalPrice>
+          <CurrentPrice>{product.currentPrice}원</CurrentPrice>
+          <OriginalPrice>{product.originalPrice}원</OriginalPrice>
         </PriceContainer>
         <RatingContainer>
-          <StarRating />
-          <ReviewCount>({product.reviewCount})</ReviewCount>
+          {/* <StarRating />
+          <ReviewCount>({product.reviewCount})</ReviewCount> */}
         </RatingContainer>
       </ProductInfo>
     </CardWrapper>

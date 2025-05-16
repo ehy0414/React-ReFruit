@@ -1,0 +1,50 @@
+import styled from "styled-components";
+import ViewProductCard from "../modules/components/ViewProductCard";
+import { useEffect, useState } from "react";
+import api from "../api/axios";
+
+const ViewSaleFruitPage = () => {
+    const [products, setProducts] = useState([]);
+
+    const getProducts = async () => {
+            try {
+                const res = await api.get("/products?type=sale");
+                setProducts(res.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+    
+        useEffect(() => {
+            getProducts();
+        },[])
+
+    return (
+        <Container>
+          <Title>Sale 상품 목록</Title>
+          {products.map((product) => (
+          <ViewProductCard key={product.id} product={product} />
+        ))}
+        </Container>
+    );
+};
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+`;
+
+const Title = styled.h1`
+  font-family: Hakgyoansim Allimjang OTF R;
+  letter-spacing: 1px;
+  font-size: 20px;
+  color: #000;
+  margin: 0;
+`;
+
+
+export default ViewSaleFruitPage;

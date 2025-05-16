@@ -30,12 +30,12 @@ export const FruitInfo = ({product}) => {
             <ProductTitle>{product.title}</ProductTitle>
             <RatingSection>
             <ReviewsWrapper>
-                <RatingStars src="https://cdn.builder.io/api/v1/image/assets/7adddd5587f24b91884c2915be4df62c/55500910f7fda67e937673122aa77ab99e4599d2?placeholderIfAbsent=true" alt="Rating stars" />
-                <ReviewCount>({product.reviewCount})</ReviewCount>
+                {/* <RatingStars src="https://cdn.builder.io/api/v1/image/assets/7adddd5587f24b91884c2915be4df62c/55500910f7fda67e937673122aa77ab99e4599d2?placeholderIfAbsent=true" alt="Rating stars" />
+                <ReviewCount>({product.reviewCount})</ReviewCount> */}
             </ReviewsWrapper>
 
             </RatingSection>
-            <ProductPrice>{product.currentPrice}</ProductPrice>
+            <ProductPrice>{product.currentPrice}원</ProductPrice>
             <ProductDescription>
               {product.content}
             </ProductDescription>

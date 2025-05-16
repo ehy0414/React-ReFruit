@@ -56,7 +56,7 @@ const SaleTitle = styled.p`
   margin-right: 80px;
 `;
 
-const CountdownTimer = ({ subTitle, count, targetDate = "2025-05-10T23:59:59", onExpire }) => {
+const CountdownTimer = ({ subTitle, count, targetDate = "2025-06-10T23:59:59", onExpire }) => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
   function getTimeLeft() {

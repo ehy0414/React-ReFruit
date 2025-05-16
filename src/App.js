@@ -9,6 +9,7 @@ import OrderFruitPage from './pages/OrderFruitPage';
 import WishlistPage from './pages/WishlistPage';
 import { WishlistProvider } from './context/WishListContext';
 import SearchPage from './pages/SearchPage';
+import ViewSaleFruitPage from './pages/ViewSaleFruitPage';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
 
         {/* 상품 구매페이지 */}
         <Route path='/purchase/:id' element={<OrderFruitPage />} />
+
+        {/* 세일상품 전체페이지 */}
+        <Route path='/refruit/sale' element={<ViewSaleFruitPage />} />
 
         {/* 위시리스트 페이지 */}
         <Route path='/wishlist' element={<WishlistPage />} />
