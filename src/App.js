@@ -11,6 +11,7 @@ import { WishlistProvider } from './context/WishListContext';
 import SearchPage from './pages/SearchPage';
 import ViewSaleFruitPage from './pages/ViewSaleFruitPage';
 import ViewMonthFruitPage from './pages/ViewMonthFruitPage';
+import ReceiptListPage from './pages/ReceiptListPage';
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
 
         {/* 검색 결과 페이지 */}
         <Route path="/search" element={<SearchPage />} />
+
+        {/* 영수증 페이지 */}
+        <Route path="/orders" element={<ReceiptListPage />} />
 
       </Routes>
       </WishlistProvider>

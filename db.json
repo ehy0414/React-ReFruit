@@ -18,7 +18,9 @@
       "discount": "-40%",
       "reviewCount": 88,
       "userId": "1744968463586",
-      "type": "sale"
+      "type": "sale",
+      "business": "홍길동",
+      "location": "전주시 식물창고2"
     },
     {
       "id": "2",
@@ -30,10 +32,22 @@
       "discount": "-25%",
       "reviewCount": 102,
       "userId": "1744968463586",
-      "type": "monthly"
+      "type": "monthly",
+      "business": "홍길동",
+      "location": "전주시 식물창고2"
     }
   ],
-  "wishlist": [],
+  "wishlist": [
+    {
+      "id": "1747394382087",
+      "userId": "1744968463586",
+      "productId": "1",
+      "title": "HAVIT HV-G92 Gamepad",
+      "currentPrice": "120",
+      "originalPrice": "160",
+      "productImage": "https://cdn.builder.io/api/v1/image/assets/TEMP/c294479147fb98a8501bd8b224b5735f97c19f58"
+    }
+  ],
   "orders": [
     {
       "id": "1747393467659",
@@ -47,7 +61,73 @@
       "orderName": "ㅇ",
       "address": "ㅇ",
       "detailAddress": "ㅇ",
-      "phone": "ㅇ"
+      "phone": "ㅇ",
+      "business": "홍길동",
+      "location": "전주시 식물창고2"
+    },
+    {
+      "id": "1747393467659",
+      "fruitId": "1",
+      "title": "HAVIT HV-G92 Gamepad",
+      "cnt": 1,
+      "price": "120",
+      "userId": "1744968463586",
+      "userName": "test",
+      "userEmail": "test1@gmail.com",
+      "orderName": "ㅇ",
+      "address": "ㅇ",
+      "detailAddress": "ㅇ",
+      "phone": "ㅇ",
+      "business": "홍길동",
+      "location": "전주시 식물창고2"
+    },
+    {
+      "id": "1747393467659",
+      "fruitId": "1",
+      "title": "HAVIT HV-G92 Gamepad",
+      "cnt": 1,
+      "price": "120",
+      "userId": "1744968463586",
+      "userName": "test",
+      "userEmail": "test1@gmail.com",
+      "orderName": "ㅇ",
+      "address": "ㅇ",
+      "detailAddress": "ㅇ",
+      "phone": "ㅇ",
+      "business": "홍길동",
+      "location": "전주시 식물창고2"
+    },
+    {
+      "id": "1747393467659",
+      "fruitId": "1",
+      "title": "HAVIT HV-G92 Gamepad",
+      "cnt": 1,
+      "price": "120",
+      "userId": "1744968463586",
+      "userName": "test",
+      "userEmail": "test1@gmail.com",
+      "orderName": "ㅇ",
+      "address": "ㅇ",
+      "detailAddress": "ㅇ",
+      "phone": "ㅇ",
+      "business": "홍길동",
+      "location": "전주시 식물창고2"
+    },
+    {
+      "id": "1747393467659",
+      "fruitId": "1",
+      "title": "HAVIT HV-G92 Gamepad",
+      "cnt": 1,
+      "price": "120",
+      "userId": "1744968463596",
+      "userName": "test",
+      "userEmail": "test1@gmail.com",
+      "orderName": "ㅇ",
+      "address": "ㅇ",
+      "detailAddress": "ㅇ",
+      "phone": "ㅇ",
+      "business": "홍길동",
+      "location": "전주시 식물창고2"
     }
   ]
 }

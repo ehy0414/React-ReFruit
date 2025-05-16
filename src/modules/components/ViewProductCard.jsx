@@ -24,8 +24,6 @@ const ViewProductCard = ({ product, onClick }) => {
     </Card>
   );
 };
-
-// 스타일
 const Card = styled.div`
   display: flex;
   border: 1px solid #e0e0e0;
@@ -34,6 +32,7 @@ const Card = styled.div`
   background-color: #fff;
   overflow: hidden;
   transition: 0.3s;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-3px);
