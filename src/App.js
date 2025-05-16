@@ -12,6 +12,12 @@ import SearchPage from './pages/SearchPage';
 import ViewSaleFruitPage from './pages/ViewSaleFruitPage';
 import ViewMonthFruitPage from './pages/ViewMonthFruitPage';
 import ReceiptListPage from './pages/ReceiptListPage';
+import AppleListPage from './pages/category/AppleListPage';
+import OrangeListPage from './pages/category/OrangeListPage';
+import GrapeListPage from './pages/category/GrapeListPage';
+import KiwiListPage from './pages/category/KiwiListPage';
+import WatermelonListPage from './pages/category/WatermelonListPage';
+import MangoListPage from './pages/category/MangoListPage';
 
 function App() {
   return (
@@ -33,6 +39,14 @@ function App() {
         {/* 세일, 이달상품 전체페이지 */}
         <Route path='/refruit/sale' element={<ViewSaleFruitPage />} />
         <Route path='/refruit/most' element={<ViewMonthFruitPage />} />
+
+        {/* 카테고리 페이지 */}
+        <Route path='/refruit/apple' element={<AppleListPage />} />
+        <Route path='/refruit/orange' element={<OrangeListPage />} />
+        <Route path='/refruit/grape' element={<GrapeListPage />} />
+        <Route path='/refruit/kiwi' element={<KiwiListPage />} />
+        <Route path='/refruit/watermelon' element={<WatermelonListPage />} />
+        <Route path='/refruit/mango' element={<MangoListPage />} />
 
         {/* 위시리스트 페이지 */}
         <Route path='/wishlist' element={<WishlistPage />} />
