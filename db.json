@@ -36,69 +36,18 @@
   "wishlist": [],
   "orders": [
     {
-      "id": "4e4c",
+      "id": "1747393467659",
       "fruitId": "1",
+      "title": "HAVIT HV-G92 Gamepad",
       "cnt": 1,
-      "price": "$120",
-      "userId": "1744968463586",
-      "userName": "test",
-      "userEmail": "test1@gmail.com",
-      "orderName": "홍길동",
-      "address": "전주대학교 공학1관 324호",
-      "detailAddress": "조교실",
-      "phone": "01012345678"
-    },
-    {
-      "id": "f4d2",
-      "fruitId": "1",
-      "cnt": 1,
-      "price": "$120",
-      "userId": "1744968463586",
-      "userName": "test",
-      "userEmail": "test1@gmail.com",
-      "orderName": "홍길동",
-      "address": "전주대학교 공학1관 324호",
-      "detailAddress": "조교실",
-      "phone": "01012345678"
-    },
-    {
-      "id": "fa4e",
-      "fruitId": "1",
-      "cnt": 1,
-      "price": "$120",
-      "userId": "1744968463586",
-      "userName": "test",
-      "userEmail": "test1@gmail.com",
-      "orderName": "홍길동2",
-      "address": "전주대학교 공학1관 2층",
-      "detailAddress": "229호",
-      "phone": "01012345670"
-    },
-    {
-      "id": "1745893160886",
-      "fruitId": "1",
-      "cnt": 2,
       "price": "120",
       "userId": "1744968463586",
       "userName": "test",
       "userEmail": "test1@gmail.com",
-      "orderName": "ㅇㅇㅇㅇ",
-      "address": "ㅇㅇ",
-      "detailAddress": "ㅇㅇㅇ",
-      "phone": "01022333333"
-    },
-    {
-      "id": "1746497755851",
-      "fruitId": "1",
-      "cnt": 2,
-      "price": "120",
-      "userId": "1744968463586",
-      "userName": "test",
-      "userEmail": "test1@gmail.com",
-      "orderName": "d",
-      "address": "d",
-      "detailAddress": "d",
-      "phone": "d"
+      "orderName": "ㅇ",
+      "address": "ㅇ",
+      "detailAddress": "ㅇ",
+      "phone": "ㅇ"
     }
   ]
 }
