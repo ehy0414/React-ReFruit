@@ -10,6 +10,7 @@ import WishlistPage from './pages/WishlistPage';
 import { WishlistProvider } from './context/WishListContext';
 import SearchPage from './pages/SearchPage';
 import ViewSaleFruitPage from './pages/ViewSaleFruitPage';
+import ViewMonthFruitPage from './pages/ViewMonthFruitPage';
 
 function App() {
   return (
@@ -28,8 +29,9 @@ function App() {
         {/* 상품 구매페이지 */}
         <Route path='/purchase/:id' element={<OrderFruitPage />} />
 
-        {/* 세일상품 전체페이지 */}
+        {/* 세일, 이달상품 전체페이지 */}
         <Route path='/refruit/sale' element={<ViewSaleFruitPage />} />
+        <Route path='/refruit/most' element={<ViewMonthFruitPage />} />
 
         {/* 위시리스트 페이지 */}
         <Route path='/wishlist' element={<WishlistPage />} />
