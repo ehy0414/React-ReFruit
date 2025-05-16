@@ -27,7 +27,7 @@ const AppleListPage = () => {
 
     return (
         <Container>
-          <Title>이달의 상품 목록</Title>
+          <Title>사과 목록</Title>
           {products.map((product) => (
           <ViewProductCard key={product.id} product={product} onClick={()=> {handleClick(product)}}/>
         ))}

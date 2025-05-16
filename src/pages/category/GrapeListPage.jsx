@@ -27,7 +27,7 @@ const GrapeListPage = () => {
 
     return (
         <Container>
-          <Title>이달의 상품 목록</Title>
+          <Title>포도 목록</Title>
           {products.map((product) => (
           <ViewProductCard key={product.id} product={product} onClick={()=> {handleClick(product)}}/>
         ))}

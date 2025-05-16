@@ -27,7 +27,7 @@ const KiwiListPage = () => {
 
     return (
         <Container>
-          <Title>이달의 상품 목록</Title>
+          <Title>키위 목록</Title>
           {products.map((product) => (
           <ViewProductCard key={product.id} product={product} onClick={()=> {handleClick(product)}}/>
         ))}
