@@ -35,7 +35,8 @@ const JoinForm = () => {
         id: Date.now().toString(),
         email: formData.email,
         password: formData.password,
-        name: formData.name
+        name: formData.name,
+        role: "user"
       });
       alert("회원가입이 완료되었습니다!");
       console.log("회원가입 성공", res.data);

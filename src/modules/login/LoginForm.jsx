@@ -31,6 +31,7 @@ const LoginForm = () => {
         localStorage.setItem("userId", user.id);
         localStorage.setItem("userName", user.name);
         localStorage.setItem("userEmail", user.email);
+        localStorage.setItem("userRole", user.role);
 
         alert("로그인 성공!");
         navigate("/");

@@ -4,7 +4,15 @@
       "id": "1744968463586",
       "email": "test1@gmail.com",
       "password": "test123@",
-      "name": "test"
+      "name": "test",
+      "role": "admin"
+    },
+    {
+      "id": "1747799894673",
+      "email": "test1@test.com",
+      "password": "test123@",
+      "name": "홍길동",
+      "role": "user"
     }
   ],
   "products": [
@@ -177,15 +185,6 @@
       "currentPrice": "8000",
       "originalPrice": "10000",
       "productImage": "/images/watermelon.png"
-    },
-    {
-      "id": "1747734945274",
-      "userId": "1744968463586",
-      "productId": "6",
-      "title": "싱싱한 포도",
-      "currentPrice": "5800",
-      "originalPrice": "7200",
-      "productImage": "/images/grape.png"
     }
   ],
   "orders": [

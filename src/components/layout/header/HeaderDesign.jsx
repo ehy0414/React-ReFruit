@@ -11,6 +11,12 @@ const HeaderDesign = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    const role = localStorage.getItem("userRole");
+    setUserRole(role);
+  }, []);
 
   const handleUserIconClick = () => {
     setDropdownOpen(prev => !prev);
@@ -44,9 +50,11 @@ const HeaderDesign = () => {
     localStorage.removeItem("userId");
     localStorage.removeItem("userName");
     localStorage.removeItem("userEmail");
+    localStorage.removeItem("userRole");
     setIsLoggedIn(false);
     alert("로그아웃 되었습니다.");
     navigate("/"); // 홈페이지로 이동
+    window.location.reload();
   };
 
   //프로필 클릭시 로그인 여부 확인
@@ -119,6 +127,9 @@ const HeaderDesign = () => {
                   <DropdownItem onClick={() => {navigate("/login")}}>로그인</DropdownItem>
                   <DropdownItem onClick={() => {navigate("/join")}}>회원가입</DropdownItem>
                 </>
+              )}
+              {userRole === "admin" && (
+                <DropdownItem onClick={() => navigate("/admin/products")}>상품관리</DropdownItem>
               )}
             </DropdownMenu>
           )}
