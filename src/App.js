@@ -18,6 +18,8 @@ import GrapeListPage from './pages/category/GrapeListPage';
 import KiwiListPage from './pages/category/KiwiListPage';
 import WatermelonListPage from './pages/category/WatermelonListPage';
 import MangoListPage from './pages/category/MangoListPage';
+import AdminProductPage from './pages/AdminProductsPage';
+import AdminFormPage from './pages/AdminFormPage';
 
 function App() {
   return (
@@ -56,6 +58,11 @@ function App() {
 
         {/* 영수증 페이지 */}
         <Route path="/orders" element={<ReceiptListPage />} />
+
+        {/* 관리자 페이지 */}
+        <Route path="/admin/products" element={<AdminProductPage />} />
+        <Route path="/admin/products/new" element={<AdminFormPage />} />
+        <Route path="/admin/products/edit/:id" element={<AdminFormPage isEdit={true} />} /> 
 
       </Routes>
       </WishlistProvider>
