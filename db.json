@@ -177,6 +177,15 @@
       "currentPrice": "8000",
       "originalPrice": "10000",
       "productImage": "/images/watermelon.png"
+    },
+    {
+      "id": "1747734945274",
+      "userId": "1744968463586",
+      "productId": "6",
+      "title": "싱싱한 포도",
+      "currentPrice": "5800",
+      "originalPrice": "7200",
+      "productImage": "/images/grape.png"
     }
   ],
   "orders": [
@@ -200,6 +209,20 @@
       "title": "제주산 오렌지",
       "cnt": 4,
       "price": "4200",
+      "userId": "1744968463586",
+      "userName": "test",
+      "userEmail": "test1@gmail.com",
+      "orderName": "ㅇ",
+      "address": "ㅇ",
+      "detailAddress": "ㅇ",
+      "phone": "ㅇ"
+    },
+    {
+      "id": "1747790457810",
+      "fruitId": "6",
+      "title": "싱싱한 포도",
+      "cnt": 2,
+      "price": "5800",
       "userId": "1744968463586",
       "userName": "test",
       "userEmail": "test1@gmail.com",

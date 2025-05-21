@@ -3,6 +3,7 @@ import { CartIcon } from "./Icons";
 
 const Button = styled.button`
   width: 100%;
+  margin-top: -12px;
   height: 41px;
   color: #fff;
   display: flex;

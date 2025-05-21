@@ -15,6 +15,8 @@ const ImageColumn = styled.div`
   flex-direction: column;
   align-items: stretch;
   line-height: normal;
+    border-radius: 8px;
+
   width: 40%;
   margin-left: 0px;
   @media (max-width: 991px) {
@@ -25,9 +27,9 @@ const ImageColumn = styled.div`
 const ImageContainer = styled.div`
   justify-content: center;
   align-items: stretch;
-  border-radius: 4px;
-  background-color: #f5f5f5;
   display: flex;
+    border-radius: 8px;
+
   flex-grow: 1;
 
   flex-direction: column;
@@ -42,10 +44,10 @@ const ImageContainer = styled.div`
 `;
 
 const ProductImg = styled.img`
-  aspect-ratio: 1.42;
   object-fit: contain;
   object-position: center;
-  width: 50%;
+  width: 80%;
+  border-radius: 8px;
   margin:0 auto;
   @media (max-width: 991px) {
     max-width: 100%;

@@ -54,9 +54,8 @@ const ProductCard = ({ product, onClick }) => {
           {isWishlisted(product.id) ? <RedHeartIcon /> : <HeartIcon />}
         </WishlistButton>
 
-        <ImageContainer>
-          <ProductImg src={product.image} alt={product.title} />
-        </ImageContainer>
+        {/* ImageContainer 없앰 */}
+        <ProductImg src={product.image} alt={product.title} />
       </ProductImageSection>
       <ProductInfo>
         <ProductTitle>{product.title}</ProductTitle>
@@ -143,37 +142,11 @@ const WishlistButton = styled.button`
   }
 `;
 
-const ImageContainer = styled.div`
-  display: flex;
-  width: 165px;
-  height: 140px;
-  padding: 12px;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  left: 35px;
-  top: 30px;
-  @media (max-width: 991px) {
-    width: 140px;
-    height: 120px;
-    left: 30px;
-  }
-  @media (max-width: 640px) {
-    width: 80%;
-    height: auto;
-    position: relative;
-    left: auto;
-    top: auto;
-    margin: 20px auto;
-  }
-`;
-
-
-
 const ProductImg = styled.img`
-  width: 150px;
-  height: 130px;
-  margin-left:-14px;
+   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
   object-fit: cover;
   @media (max-width: 991px) {
     width: 120px;

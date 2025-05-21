@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const ReceiptCard = ({ order }) => {
+    const orderPrice = Number(order.price) * Number(order.cnt);
   return (
     <ReceiptWrapper>
       <ReceiptPaper>
@@ -10,7 +11,7 @@ const ReceiptCard = ({ order }) => {
           <Row><Label>주문번호</Label><Value>{order.id}</Value></Row>
           <Row><Label>상품명</Label><Value>{order.title}</Value></Row>
           <Row><Label>수량</Label><Value>{order.cnt}개</Value></Row>
-          <Row><Label>금액</Label><Value>{order.price}원</Value></Row>
+          <Row><Label>금액</Label><Value>{orderPrice}원</Value></Row>
         </Section>
         <DashedLine />
         <Section>

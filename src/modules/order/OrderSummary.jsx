@@ -98,7 +98,6 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  background-color: #f5f5f5;
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -110,10 +109,10 @@ const ImageContainer = styled.div`
 `;
 
 const ProductImage = styled.img`
-  aspect-ratio: 1.57;
-  object-fit: contain;
-  object-position: center;
-  width: 214px;
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 4px;
 `;
 
 const ButtonContainer = styled.div`

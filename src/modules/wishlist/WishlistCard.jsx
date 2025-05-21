@@ -28,20 +28,19 @@ const Card = styled.article`
 
 const ImageContainer = styled.div`
     position: relative;
-    width: 86%;
-    height: 150px;
+    width: 235px;
+    height: 200px;
+    aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 12px;
 `;
 
 
 const ProductImage = styled.img`
-    max-width: 80%;
-    max-height: 80%;
-    margin-left: 5%;
-    margin-top: 12%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 4px;
 `;
 

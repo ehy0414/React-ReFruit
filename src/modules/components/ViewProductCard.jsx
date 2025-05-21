@@ -48,11 +48,12 @@ const ImageWrapper = styled.div`
 `;
 
 const ProductImage = styled.img`
-  width: 150px;
-  height: 130px;
-  margin-left:14px;
-  margin-top:14px;
-  object-fit: cover;
+    width: 150px;
+    height: 130px;
+    margin-left:14px;
+    margin-top:14px;
+    border-radius: 8px;
+    object-fit: cover;
 `;
 
 const CardContent = styled.div`
