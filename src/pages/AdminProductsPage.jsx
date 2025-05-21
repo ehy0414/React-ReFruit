@@ -16,6 +16,7 @@ const AdminProductPage = () => {
   }, []);
 
   const handleDelete = async (id) => {
+    alert("삭제가 되었습니다!");
     await api.delete(`/products/${id}`);
     setProducts(products.filter((p) => p.id !== id));
   };

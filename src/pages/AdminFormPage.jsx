@@ -27,7 +27,7 @@ const AdminFormPage = ({ isEdit = false }) => {
     }
   }, [isEdit, id]);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
   const { name, value } = e.target;
 
   setProduct(prev => {
