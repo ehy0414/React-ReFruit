@@ -22,6 +22,7 @@ import AdminProductPage from './pages/AdminProductsPage';
 import AdminFormPage from './pages/AdminFormPage';
 import ProfilePage from './pages/ProfilePage';
 import WriteReviewPage from './pages/review/WriteReviewPage';
+import ReviewsPage from './pages/review/ReviewsPage';
 
 function App() {
   return (
@@ -69,7 +70,8 @@ function App() {
         <Route path="/admin/products/edit/:id" element={<AdminFormPage isEdit={true} />} /> 
 
         {/* 리뷰 페이지 */}
-        <Route path="/review" element={<WriteReviewPage/>} /> 
+        <Route path="/review/write" element={<WriteReviewPage/>} /> 
+        <Route path="/review" element={<ReviewsPage/>} /> 
 
       </Routes>
       </WishlistProvider>
