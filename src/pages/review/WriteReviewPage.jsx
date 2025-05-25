@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const WriteReviewPage = () => {
     const userId = localStorage.getItem("userId");
+    const userName = localStorage.getItem("userName");
     const [orders, setOrders] = useState([]);
     const [reviews, setReviews] = useState([]);
     const [selectedOrderId, setSelectedOrderId] = useState("");
@@ -76,6 +77,7 @@ const WriteReviewPage = () => {
             content,
             createdAt: new Date().toISOString(),
             image: imagePreview || null,  // base64 string or null
+            name: userName
         };
 
         await api.post("/reviews", reviewData);
@@ -261,7 +263,7 @@ const SubmitButton = styled.button`
   width: 100%;
   padding: 12px 0;
   margin-top: 20px;
-  background-color: #3498db;
+  background-color: #e74c3c;
   color: white;
   font-weight: 700;
   border: none;
@@ -271,7 +273,7 @@ const SubmitButton = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover:not(:disabled) {
-    background-color: #2980b9;
+    background-color: #c0392b;
   }
 
   &:disabled {
