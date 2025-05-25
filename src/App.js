@@ -20,6 +20,7 @@ import WatermelonListPage from './pages/category/WatermelonListPage';
 import MangoListPage from './pages/category/MangoListPage';
 import AdminProductPage from './pages/AdminProductsPage';
 import AdminFormPage from './pages/AdminFormPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/join' element={<JoinPage />} />
+        {/* 프로필 페이지 */}
+        <Route path='/profile' element={<ProfilePage />} />
 
         {/* 상품 상세페이지 */}
         <Route path='/fruit/detail/:id' element={<FruitDetailPage />} />

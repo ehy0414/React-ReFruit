@@ -120,7 +120,7 @@ const HeaderDesign = () => {
             />
           </CartContainer>
           <UserIcon onClick={handleUserIconClick}
-                    src={user.userIcon}
+                    src={user?.userIcon || null}
           />
           {isDropdownOpen && (
             <DropdownMenu ref={dropdownRef}>
