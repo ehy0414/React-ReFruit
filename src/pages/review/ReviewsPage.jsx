@@ -51,7 +51,7 @@ const ReviewsPage = () => {
         <ReviewRowCard key={review.id}>
           {review.image && <Image src={review.image} alt="리뷰 이미지" />}
           <TextContent>
-            <ProductName>{review.name}</ProductName>
+            <ProductName>{review.title}</ProductName>
             <Stars>
               {Array.from({ length: 5 }, (_, i) => (
                 <Star key={i} filled={i < review.rating}>★</Star>
