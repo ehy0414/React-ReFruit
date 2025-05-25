@@ -6,6 +6,7 @@ import JoinInputs from "./components/JoinInputs";
 import FormActions from "../components/FormActions";
 import api from "../../api/axios"; 
 import { useNavigate } from "react-router-dom";
+import userIcon from "./images/userIcon.png";
 
 const JoinForm = () => {
   const navigate = useNavigate();
@@ -36,7 +37,8 @@ const JoinForm = () => {
         email: formData.email,
         password: formData.password,
         name: formData.name,
-        role: "user"
+        role: "user",
+        userIcon: userIcon
       });
       alert("회원가입이 완료되었습니다!");
       console.log("회원가입 성공", res.data);

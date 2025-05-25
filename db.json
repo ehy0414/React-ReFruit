@@ -5,7 +5,8 @@
       "email": "test1@gmail.com",
       "password": "test123@",
       "name": "test",
-      "role": "admin"
+      "role": "admin",
+      "userIcon": "/static/media/userIcon.340e3079bddc204172bc.png"
     },
     {
       "id": "1747799894673",
@@ -13,6 +14,14 @@
       "password": "test123@",
       "name": "홍길동",
       "role": "user"
+    },
+    {
+      "id": "1748179831842",
+      "email": "test2@test.com",
+      "password": "test123@",
+      "name": "홍길동",
+      "role": "user",
+      "userIcon": "/static/media/userIcon.340e3079bddc204172bc.png"
     }
   ],
   "products": [

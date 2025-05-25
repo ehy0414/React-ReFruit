@@ -1,9 +1,10 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import icons from "../../../assets/images/image.png";
 import logo from "./images/logo.png";
+import api from "../../../api/axios";
 
 const HeaderDesign = () => {
   const navigate = useNavigate();
@@ -12,10 +13,20 @@ const HeaderDesign = () => {
   const dropdownRef = useRef(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [userRole, setUserRole] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const role = localStorage.getItem("userRole");
+    const userId = localStorage.getItem("userId");
     setUserRole(role);
+
+    api.get(`/users/${userId}`)
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   }, []);
 
   const handleUserIconClick = () => {
@@ -109,13 +120,7 @@ const HeaderDesign = () => {
             />
           </CartContainer>
           <UserIcon onClick={handleUserIconClick}
-            dangerouslySetInnerHTML={{
-              __html: `<svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect y="0.5" width="32" height="32" rx="16" fill="#DB4444"></rect>
-                <path d="M21 23.5V21.8333C21 20.9493 20.691 20.1014 20.1408 19.4763C19.5907 18.8512 18.8446 18.5 18.0667 18.5H12.9333C12.1554 18.5 11.4093 18.8512 10.8592 19.4763C10.309 20.1014 10 20.9493 10 21.8333V23.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M16 15.5C17.6569 15.5 19 14.1569 19 12.5C19 10.8431 17.6569 9.5 16 9.5C14.3431 9.5 13 10.8431 13 12.5C13 14.1569 14.3431 15.5 16 15.5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>`
-            }}
+                    src={user.userIcon}
           />
           {isDropdownOpen && (
             <DropdownMenu ref={dropdownRef}>
@@ -273,12 +278,14 @@ const CartIcon = styled.img`
   height:23px;
 `;
 
-const UserIcon = styled.button`
+const UserIcon = styled.img`
   background: none;
   border: none;
-  padding: 0;
   cursor: pointer;
-  display: flex;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
 `;
 
 const DropdownMenu = styled.div`
