@@ -59,13 +59,16 @@ const ProductCard = ({ product, onClick }) => {
       </ProductImageSection>
       <ProductInfo>
         <ProductTitle>{product.title}</ProductTitle>
+          <ReviewCount>
+          사용자 리뷰:
+          <CountNumber>({product.reviewCount})</CountNumber>
+        </ReviewCount>
         <PriceContainer>
           <CurrentPrice>{product.currentPrice}원</CurrentPrice>
           <OriginalPrice>{product.originalPrice}원</OriginalPrice>
         </PriceContainer>
         <RatingContainer>
-          {/* <StarRating />
-          <ReviewCount>({product.reviewCount})</ReviewCount> */}
+          
         </RatingContainer>
       </ProductInfo>
     </CardWrapper>
@@ -206,13 +209,18 @@ const RatingContainer = styled.div`
 `;
 
 const ReviewCount = styled.span`
-  color: #000;
-  font-family: Poppins, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 21px;
-  opacity: 0.5;
+  opacity: 0.9;
+  font-size: 0.9rem;
+  margin-top: -5px;
+  color: #444;
 `;
+
+const CountNumber = styled.span`
+  font-weight: bold;
+  color: #db4444;
+  margin-left: 4px;
+`;
+
 
 
 

@@ -28,13 +28,11 @@ export const FruitInfo = ({product}) => {
         <InfoColumn>
         <InfoContainer>
             <ProductTitle>{product.title}</ProductTitle>
-            <RatingSection>
-            <ReviewsWrapper>
-                {/* <RatingStars src="https://cdn.builder.io/api/v1/image/assets/7adddd5587f24b91884c2915be4df62c/55500910f7fda67e937673122aa77ab99e4599d2?placeholderIfAbsent=true" alt="Rating stars" />
-                <ReviewCount>({product.reviewCount})</ReviewCount> */}
-            </ReviewsWrapper>
+            <ReviewCount>
+              사용자 리뷰:
+              <CountNumber>({product.reviewCount})</CountNumber>
+            </ReviewCount>
 
-            </RatingSection>
             <ProductPrice>{product.currentPrice}원</ProductPrice>
             <ProductDescription>
               {product.content}
@@ -126,8 +124,18 @@ const RatingStars = styled.img`
 `;
 
 const ReviewCount = styled.span`
-  opacity: 0.5;
+  opacity: 0.9;
+  font-size: 0.9rem;
+  margin-top: -5px;
+  color: #444;
 `;
+
+const CountNumber = styled.span`
+  font-weight: bold;
+  color: #db4444;
+  margin-left: 4px;
+`;
+
 
 const ProductPrice = styled.div`
   color: #000;
