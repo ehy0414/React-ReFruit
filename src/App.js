@@ -21,6 +21,7 @@ import MangoListPage from './pages/category/MangoListPage';
 import AdminProductPage from './pages/AdminProductsPage';
 import AdminFormPage from './pages/AdminFormPage';
 import ProfilePage from './pages/ProfilePage';
+import WriteReviewPage from './pages/review/WriteReviewPage';
 
 function App() {
   return (
@@ -66,6 +67,9 @@ function App() {
         <Route path="/admin/products" element={<AdminProductPage />} />
         <Route path="/admin/products/new" element={<AdminFormPage />} />
         <Route path="/admin/products/edit/:id" element={<AdminFormPage isEdit={true} />} /> 
+
+        {/* 리뷰 페이지 */}
+        <Route path="/review" element={<WriteReviewPage/>} /> 
 
       </Routes>
       </WishlistProvider>
