@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StarRating } from '../../assets/StarRating';
 
 const ViewProductCard = ({ product, onClick }) => {
   return (
@@ -10,13 +11,20 @@ const ViewProductCard = ({ product, onClick }) => {
       <CardContent>
         <Title>{product.title}</Title>
         <Description>{product.content}</Description>
+
+        {/* 별점 및 리뷰 수 */}
+        <RatingRow>
+          <StarRating rating={product.averageRating || 0} />
+          <ReviewCount>({product.reviewCount || 0})</ReviewCount>
+        </RatingRow>
+
         <PriceRow>
           <CurrentPrice>{product.currentPrice}원</CurrentPrice>
           <OriginalPrice>{product.originalPrice}원</OriginalPrice>
           <Discount>{product.discount}</Discount>
         </PriceRow>
+
         <InfoRow>
-          <span>리뷰 수: {product.reviewCount}</span>
           <span>판매자: {product.business}</span>
           <span>위치: {product.location}</span>
         </InfoRow>
@@ -24,6 +32,7 @@ const ViewProductCard = ({ product, onClick }) => {
     </Card>
   );
 };
+
 const Card = styled.div`
   display: flex;
   border: 1px solid #e0e0e0;
@@ -74,6 +83,19 @@ const Description = styled.p`
   margin: 0 0 12px;
   line-height: 1.4;
 `;
+
+const RatingRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+`;
+
+const ReviewCount = styled.span`
+  font-size: 13px;
+  color: #666;
+`;
+
 
 const PriceRow = styled.div`
   display: flex;

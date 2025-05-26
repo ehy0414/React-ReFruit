@@ -1,9 +1,10 @@
 "use client";
 import styled from "styled-components";
-import { RedHeartIcon, HeartIcon, StarRating } from "./Icons";
+import { RedHeartIcon, HeartIcon } from "./Icons";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useWishlist } from "../../../context/WishListContext";
+import { StarRating } from "../../../assets/StarRating";
 
 const ProductCard = ({ product, onClick }) => {
   const {
@@ -59,10 +60,10 @@ const ProductCard = ({ product, onClick }) => {
       </ProductImageSection>
       <ProductInfo>
         <ProductTitle>{product.title}</ProductTitle>
-          <ReviewCount>
-          사용자 리뷰:
-          <CountNumber>({product.reviewCount})</CountNumber>
-        </ReviewCount>
+          <RatingContainer>
+            <StarRating rating={product.averageRating} />
+            <span>({product.reviewCount})</span>
+          </RatingContainer>
         <PriceContainer>
           <CurrentPrice>{product.currentPrice}원</CurrentPrice>
           <OriginalPrice>{product.originalPrice}원</OriginalPrice>

@@ -27,22 +27,44 @@ export function HomePage() {
     const [saleProducts, setSaleProducts] = useState([]);
     const [monthlyProducts, setMonthlyProducts] = useState([]);
     const [saleEnded, setSaleEnded] = useState(false);
+    const [reviews, setReviews] = useState([]);
 
-    const getProducts = async () => {
-        try {
-            const res = await api.get("/products");
-            setProducts(res.data);
-            // 타입에 따라 필터링
-            setSaleProducts(res.data.filter((product) => product.type === "sale"));
-            setMonthlyProducts(res.data.filter((product) => product.type === "monthly"));
-        } catch (error) {
-            console.error(error);
-        }
+    const getProductsAndReviews = async () => {
+    try {
+        const [productsRes, reviewsRes] = await Promise.all([
+        api.get("/products"),
+        api.get("/reviews")
+        ]);
+
+        const productsData = productsRes.data;
+        const reviewsData = reviewsRes.data;
+
+        // 각 product에 평균 별점과 리뷰 개수 추가
+        const updatedProducts = productsData.map(product => {
+        const productReviews = reviewsData.filter(review => review.fruitId === String(product.id));
+        const reviewCount = productReviews.length;
+        const averageRating = reviewCount === 0
+            ? 0
+            : productReviews.reduce((acc, cur) => acc + cur.rating, 0) / reviewCount;
+
+        return {
+            ...product,
+            averageRating: averageRating.toFixed(1),
+            reviewCount
+        };
+        });
+
+        setProducts(updatedProducts);
+        setSaleProducts(updatedProducts.filter(p => p.type === "sale"));
+        setMonthlyProducts(updatedProducts.filter(p => p.type === "monthly"));
+    } catch (error) {
+        console.error("데이터 불러오기 실패:", error);
+    }
     };
 
     useEffect(() => {
-        getProducts();
-    },[])
+    getProductsAndReviews();
+    }, []);
 
     return(
         <Wrapper>

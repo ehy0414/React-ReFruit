@@ -1,4 +1,3 @@
-"use client";
 import styled from "styled-components";
 import { FruitImages } from "../modules/fruitDetail/FruitImages";
 import { FruitInfo } from "../modules/fruitDetail/FruitInfo";
@@ -8,22 +7,42 @@ import { useEffect, useState } from "react";
 import api from "../api/axios";
 
 const FruitDetailPage = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [product, setProduct] = useState();
 
   const getProduct = async () => {
     try {
-        const res = await api.get(`/products?id=${id}`);
-        setProduct(res.data[0]);
+      const [productRes, reviewsRes] = await Promise.all([
+        api.get(`/products?id=${id}`),
+        api.get(`/reviews`)
+      ]);
+
+      const productData = productRes.data[0];
+      const reviews = reviewsRes.data.filter(
+        (review) => review.fruitId === id
+      );
+
+      const reviewCount = reviews.length;
+      const averageRating =
+        reviewCount === 0
+          ? 0
+          : (
+              reviews.reduce((sum, r) => sum + r.rating, 0) / reviewCount
+            ).toFixed(1);
+
+      setProduct({
+        ...productData,
+        reviewCount,
+        averageRating
+      });
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
   };
+
   useEffect(() => {
     getProduct();
-  },[id]);
-
-  console.log(product);
+  }, [id]);
 
   return (
     <Container>
@@ -34,7 +53,7 @@ const FruitDetailPage = () => {
             <FruitInfo product={product} />
           </>
         ) : (
-          <div>로딩 중...</div> // 로딩 스피너로 바꿔도 좋아요!
+          <div>로딩 중...</div>
         )}
       </ContentWrapper>
       <Footer />
@@ -43,15 +62,14 @@ const FruitDetailPage = () => {
 };
 
 const Container = styled.main`
-    width:100%;
-    height:100%;
-
+  width: 100%;
+  height: 100%;
 `;
 
 const ContentWrapper = styled.div`
   gap: 20px;
   display: flex;
-  width:80%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 20px;
   @media (max-width: 991px) {

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { FruitQuantity } from "./FruitQuantity";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { StarRating } from "../../assets/StarRating";
 
 export const FruitInfo = ({product}) => {
     // 물품 구매 수량
@@ -28,10 +29,11 @@ export const FruitInfo = ({product}) => {
         <InfoColumn>
         <InfoContainer>
             <ProductTitle>{product.title}</ProductTitle>
-            <ReviewCount>
-              사용자 리뷰:
-              <CountNumber>({product.reviewCount})</CountNumber>
-            </ReviewCount>
+              <ReviewsWrapper>
+                <StarRating rating={product.averageRating} />
+                <span>({product.reviewCount})</span>
+              </ReviewsWrapper>
+
 
             <ProductPrice>{product.currentPrice}원</ProductPrice>
             <ProductDescription>
@@ -49,152 +51,92 @@ export const FruitInfo = ({product}) => {
         </InfoColumn>
     );
 };
-
 const InfoColumn = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  line-height: normal;
   width: 45%;
   margin-left: 160px;
-  margin-top: -50px;
+  margin-top: -40px;
+
   @media (max-width: 991px) {
     width: 100%;
+    margin: 0;
+    padding: 0 16px;
   }
 `;
 
 const InfoContainer = styled.article`
-  display: flex;
   margin-top: 100px;
-  width: 100%;
-  flex-direction: column;
-  align-items: stretch;
-  font-family:
-    Poppins,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-weight: 400;
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  color: #222;
+
   @media (max-width: 991px) {
     margin-top: 40px;
   }
 `;
 
 const ProductTitle = styled.h1`
-  color: #000;
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.72px;
-  align-self: start;
-`;
-
-const RatingSection = styled.div`
-  align-self: start;
-  display: flex;
-  margin-top: 16px;
-  align-items: start;
-  gap: 16px;
-  font-size: 14px;
-  justify-content: start;
+  margin-bottom: 12px;
 `;
 
 const ReviewsWrapper = styled.div`
   display: flex;
-  align-items: start;
-  gap: 8px;
-  color: #000;
-  justify-content: start;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #555;
 `;
-
-const RatingStars = styled.img`
-  aspect-ratio: 5;
-  object-fit: cover;
-  margin-top: -2px;
-  object-position: center;
-  width: 100px;
-  flex-shrink: 0;
-`;
-
-const ReviewCount = styled.span`
-  opacity: 0.9;
-  font-size: 0.9rem;
-  margin-top: -5px;
-  color: #444;
-`;
-
-const CountNumber = styled.span`
-  font-weight: bold;
-  color: #db4444;
-  margin-left: 4px;
-`;
-
 
 const ProductPrice = styled.div`
-  color: #000;
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
   font-size: 24px;
-  line-height: 1;
-  letter-spacing: 0.72px;
-  align-self: start;
+  font-weight: 500;
   margin-top: 16px;
+  color: #e63946;
 `;
 
 const ProductDescription = styled.p`
-  color: #000;
-  font-size: 14px;
-  line-height: 21px;
-  margin-top: 24px;
-  margin-right: 28px;
-  @media (max-width: 991px) {
-    margin-right: 10px;
-  }
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: 20px;
+  color: #444;
 `;
 
 const Separator = styled.hr`
-  border-color: rgba(0, 0, 0, 1);
-  border-style: solid;
-  border-width: 1px;
-  background-color: #000;
-  margin-top: 23px;
-  width: 31rem;
-  margin-left: -1px;
+  border: none;
   height: 1px;
+  background-color: #ddd;
+  margin: 30px 0;
 `;
 
 const ActionsContainer = styled.div`
   display: flex;
-  margin-top: 24px;
-  width: 100%;
-  align-items: stretch;
-  gap: 17px;
-  font-weight: 500;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 `;
 
 const BuyButton = styled.button`
-  align-self: stretch;
-  border-radius: 4px;
-  background-color: #db4444;
-  padding: 10px 48px;
-  gap: 10px;
+  background-color: #e63946;
+  color: white;
   font-size: 16px;
-  color: #fafafa;
+  padding: 12px 36px;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
-  margin-left: 12%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  margin-left: 24%;
+
+  &:hover {
+    background-color: #c5283d;
+  }
+
   @media (max-width: 991px) {
-    padding: 10px 20px;
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
   }
 `;
+
