@@ -229,7 +229,7 @@ const Star = styled.button`
 `;
 
 const Textarea = styled.textarea`
-  width: 100%;
+  width: 94%;
   height: 110px;
   resize: vertical;
   padding: 12px 14px;
