@@ -35,6 +35,7 @@
 
 - Frontend: React, Styled-components
 - Server: Json-server
+- Design: Figma
 
 ### 🖥 주요 기능
 
