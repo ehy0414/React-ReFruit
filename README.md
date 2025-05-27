@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+## 🍓 프로젝트 소개 - Re-Fruit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+### 🍓 **개발 기간**
 
-In the project directory, you can run:
+| 개발 기간 | 25.3.29~25.5.27 |
+| --- | --- |
 
-### `npm start`
+### 🍓 **팀원 소개**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| 팀원 | 엄현용 | 김성빈 |
+| --- | --- | --- |
+| 역할 | FE | DG |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ 
 
-### `npm test`
+### 📝 기획 배경
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+오늘날 유통기한이 얼마 남지 않았거나 겉모습이 조금 손상된 과일들은 여전히 섭취 가능한 상태임에도 불구하고 대부분 폐기되고 있습니다. 이러한 낭비는 환경적, 경제적으로도 큰 문제를 야기합니다.
 
-### `npm run build`
+이를 해결하기 위해, **조금 덜 예쁘지만 여전히 맛있고 건강한 과일들을 합리적인 가격에 판매하고 공유할 수 있는 플랫폼**을 기획하게 되었습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**중고과일 판매 사이트**는 판매자와 소비자가 과일을 직접 거래하며 음식물 쓰레기를 줄이고, 동시에 저렴한 가격으로 신선한 과일을 소비할 수 있도록 돕는 것을 목표로 합니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🎯 주요 목적
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **환경 보호**: 아직 섭취 가능한 과일을 폐기하지 않고 재활용하여 음식물 쓰레기 문제를 줄입니다.
+- **경제적 이익**: 소비자는 저렴한 가격에 과일을 구입할 수 있고, 판매자는 처분할 과일을 판매하여 수익을 얻을 수 있습니다.
+- **지역 커뮤니티 활성화**: 사용자 간 직거래를 통해 신뢰 기반의 로컬 마켓을 형성합니다.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🔧 기술 스택
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Frontend: React, Styled-components
+- Server: Json-server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🖥 주요 기능
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- 상품 등록 및 조회
+- Sale 상품 및 이달의 상품 구분
+- 리뷰 및 별점 등록
+- 주문 및 결제 (가상계좌 or 계좌표시 후 입금 확인 방식)
+- 카테고리 구분 (사과, 포도, 망고 등)
+- 주문한 품목 조회
+- 위시리스트 저장 및 주문
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
