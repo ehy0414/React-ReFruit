@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import logo from "./images/loginlogo.jpg";
 
 const FormImageSection = () => {
   return (
     <ImageContainer>
-      <CartImage src="https://cdn.builder.io/api/v1/image/assets/TEMP/97f6d8868977ae3fdae27fc5fa8c17f814942251?placeholderIfAbsent=true" alt="Shopping Cart" />
+      <CartImage src={logo} alt="Shopping Cart" />
     </ImageContainer>
   );
 };
@@ -15,7 +16,6 @@ const ImageContainer = styled.section`
     align-items: center;
     padding-top: 45px;
     border-radius: 0 4px 4px 0;
-    background-color: #cbe4e8;
     margin-left: 8%;
     margin-top: 10px;
 

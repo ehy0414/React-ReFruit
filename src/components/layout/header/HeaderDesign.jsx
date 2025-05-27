@@ -279,7 +279,7 @@ const CartIcon = styled.img`
 `;
 
 const UserIcon = styled.img`
-  background: none;
+  background: gray;
   border: none;
   cursor: pointer;
   width: 30px;

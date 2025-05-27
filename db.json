@@ -289,6 +289,20 @@
       "address": "ㅇ",
       "detailAddress": "ㅇ",
       "phone": "ㅇ"
+    },
+    {
+      "id": "1748316646966",
+      "fruitId": "4",
+      "title": "씨 없는 수박",
+      "cnt": 1,
+      "price": "8000",
+      "userId": "1744968463586",
+      "userName": "test",
+      "userEmail": "test1@gmail.com",
+      "orderName": "d",
+      "address": "d",
+      "detailAddress": "d",
+      "phone": "d"
     }
   ],
   "reviews": [
